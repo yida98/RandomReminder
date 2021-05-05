@@ -10,14 +10,13 @@ import SwiftUI
 struct AlarmView: View {
     
     var alarm: Alarm
-    
+    @EnvironmentObject var viewModel: AlarmViewModel
     @GestureState private var isDragging: Bool = false
-    @State private var x: CGFloat = 0
-    @State private var difference: CGFloat?
     
     var body: some View {
         ZStack {
-            AlarmTools(xValue: $x)
+            AlarmTools()
+                .environmentObject(viewModel)
             Group {
                 VStack(alignment: .leading) {
                     Text(alarm.descriptionBuilder())
@@ -25,19 +24,19 @@ struct AlarmView: View {
                 }
                 .modifier(AlarmViewModifier())
             }
-            .offset(x: x)
+            .offset(x: viewModel.location.x)
             .gesture(
                 DragGesture()
                     .onChanged({ value in
-                        if difference == nil {
-                            difference = value.location.x - x
+                        if viewModel.difference == nil {
+                            viewModel.difference = value.location.x - viewModel.location.x
                         }
-                        x += value.location.x - difference!
-                        x = x * Constants.movementScale
+                        viewModel.location.x += value.location.x - viewModel.difference!
+                        viewModel.location.x = viewModel.location.x * Constants.movementScale
                     })
                     .onEnded({ value in
-                        difference = nil
-                        x = 0
+                        viewModel.difference = nil
+                        viewModel.location.x = 0
                     })
             )
         }

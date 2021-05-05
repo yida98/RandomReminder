@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AlarmTools: View {
     
-    @Binding var xValue: CGFloat
+    @EnvironmentObject var viewModel: AlarmViewModel
     
     static private var graceLength: CGFloat = 30
     static private var firstBound: CGFloat = -(Constants.insetSize.width/2 + 10 + AlarmTools.graceLength)
@@ -20,8 +20,8 @@ struct AlarmTools: View {
             Spacer()
             ZStack {
                 Circle()
-                    .fill(xValue < AlarmTools.secondBound ? Color.red : Color.white)
-                    .scaleEffect(xValue < AlarmTools.secondBound ? 1 : 0.7, anchor: .center)
+                    .fill(viewModel.delete ? Color.red : Color.white)
+                    .scaleEffect(viewModel.delete ? 1 : 0.7, anchor: .center)
                     .frame(width: 40, height: 40)
                     .animation(.easeOut)
                 Image(systemName: "trash.fill")
@@ -31,10 +31,9 @@ struct AlarmTools: View {
             
             ZStack {
                 Circle()
-                    .fill((xValue < AlarmTools.firstBound && xValue > AlarmTools.secondBound) ? Color.blue : Color.white)
-                    .scaleEffect((xValue < AlarmTools.firstBound && xValue > AlarmTools.secondBound) ? 1 : 0.7, anchor: .center)
-                    .frame(width: 40, height: 40)
-                    .animation(.easeOut)
+                    .fill(viewModel.snooze ? Color.blue : Color.white)
+                    .scaleEffect(viewModel.snooze ? 1 : 0.7, anchor: .center)
+                    .modifier(CircleHaptic(condition: $viewModel.snooze))
                 Image(systemName: "moon.zzz.fill")
                     .foregroundColor(Color.white)
             }
@@ -44,7 +43,15 @@ struct AlarmTools: View {
 }
 
 struct CircleHaptic: ViewModifier {
+    
+    @Binding var condition: Bool
+    
     func body(content: Content) -> some View {
-        <#code#>
+        content
+            .frame(width: 40, height: 40)
+            .animation(.easeOut)
+            .onChange(of: condition) { some in
+                Constants.hapticFeedback(.medium)
+            }
     }
 }

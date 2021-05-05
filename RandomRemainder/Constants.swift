@@ -14,6 +14,12 @@ struct Constants {
     static let insetSize: CGSize = CGSize(width: 60, height: 60)
     
     static let movementScale: CGFloat = 0.4
+    
+    static func hapticFeedback(_ intensity: UIImpactFeedbackGenerator.FeedbackStyle) {
+        
+        let impactMed = UIImpactFeedbackGenerator(style: intensity)
+        impactMed.impactOccurred()
+    }
 }
 
 extension Color {

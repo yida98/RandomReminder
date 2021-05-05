@@ -24,6 +24,7 @@ struct ContentView: View {
                 ScrollView {
                     ForEach(storage.alarms) { alarm in
                         AlarmView(alarm: alarm)
+                            .environmentObject(AlarmViewModel())
                             .padding(.bottom, 20)
                     }
                     .onDelete(perform: viewModel.deleteAlarm)
