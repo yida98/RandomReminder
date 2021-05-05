@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AlarmView: View {
     
-    var alarm: Alarm
     @EnvironmentObject var viewModel: AlarmViewModel
     @GestureState private var isDragging: Bool = false
     
@@ -18,9 +17,13 @@ struct AlarmView: View {
             AlarmTools()
                 .environmentObject(viewModel)
             Group {
-                VStack(alignment: .leading) {
-                    Text(alarm.descriptionBuilder())
-                    Text(alarm.text)
+                HStack{
+                    VStack(alignment: .leading) {
+                        Text(viewModel.alarm.descriptionBuilder())
+                            .font(.caption)
+                        Text(viewModel.alarm.text)
+                    }
+                    Spacer()
                 }
                 .modifier(AlarmViewModifier())
             }
@@ -28,7 +31,6 @@ struct AlarmView: View {
             .gesture(
                 DragGesture()
                     .onChanged({ value in
-                        viewModel.finished = false
                         if viewModel.difference == nil {
                             viewModel.difference = value.location.x - viewModel.location.x
                         }
@@ -39,8 +41,13 @@ struct AlarmView: View {
                     })
                     .onEnded({ value in
                         viewModel.difference = nil
+                        if viewModel.snooze {
+                            viewModel.snoozeAlarm()
+                        }
+                        if viewModel.delete {
+                            viewModel.deleteAlarm()
+                        }
                         viewModel.location.x = 0
-                        viewModel.finished = true
                     })
             )
         }
@@ -49,6 +56,6 @@ struct AlarmView: View {
 
 struct AlarmView_Previews: PreviewProvider {
     static var previews: some View {
-        AlarmView(alarm: Alarm(text: "Wub"))
+        AlarmView()
     }
 }

@@ -13,14 +13,11 @@ class AlarmViewModel: ObservableObject {
     
     @Published var location: CGPoint = CGPoint(x: 0, y: 0)
     @Published var difference: CGFloat?
-    @Published var finished: Bool = false
-    
-    static private var graceLength: CGFloat = 30
-    static private var firstBound: CGFloat = -(Constants.insetSize.width/2 + AlarmTools.padding + AlarmViewModel.graceLength)
-    static private var secondBound: CGFloat = -(-AlarmViewModel.firstBound + AlarmTools.spaceBetween + AlarmViewModel.graceLength)
     
     @Published var snooze: Bool = false
     @Published var delete: Bool = false
+    
+    @ObservedObject var alarm: Alarm
     
     private var cancellable = Set<AnyCancellable>()
 
@@ -43,13 +40,11 @@ class AlarmViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }
     
-    init() {
+    init(alarm: Alarm) {
+        self.alarm = alarm
         snoozePublisher
             .receive(on: RunLoop.main)
             .sink { value in
-                if value == true {
-                    self.snoozeAlarm()
-                }
                 self.snooze = value
             }
             .store(in: &cancellable)
@@ -57,19 +52,22 @@ class AlarmViewModel: ObservableObject {
         deletePublisher
             .receive(on: RunLoop.main)
             .sink { value in
-                if value == true {
-                    self.deleteAlarm()
-                }
                 self.delete = value
             }
             .store(in: &cancellable)
     }
     
     func deleteAlarm() {
-        debugPrint("Delete")
+        Storage().deleteAlarm(with: alarm.id)
     }
     
     func snoozeAlarm() {
         debugPrint("Snooze")
     }
+}
+
+extension AlarmViewModel {
+    static private var graceLength: CGFloat = 30
+    static private var firstBound: CGFloat = -(Constants.insetSize.width/2 + AlarmTools.padding + AlarmViewModel.graceLength)
+    static private var secondBound: CGFloat = -(-AlarmViewModel.firstBound + AlarmTools.spaceBetween + AlarmViewModel.graceLength)
 }

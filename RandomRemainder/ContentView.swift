@@ -17,24 +17,39 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            DrippingShape(location: $viewModel.location)
+                .fill(Color.blue)
+                .animation(.easeIn)
+                .frame(height: 120)
             ZStack {
-    //            Circle()
-    //                .fill(Color.blue)
-                
+                VStack {
+                    Circle()
+                        .fill(Color.blue)
+                        .frame(width: Constants.circleM, height: Constants.circleM)
+                    Spacer()
+                }
                 ScrollView {
                     ForEach(storage.alarms) { alarm in
-                        AlarmView(alarm: alarm)
-                            .environmentObject(AlarmViewModel())
+                        AlarmView()
+                            .environmentObject(AlarmViewModel(alarm: alarm))
                             .padding(.bottom, 20)
                     }
                     .onDelete(perform: viewModel.deleteAlarm)
                 }
                 .gesture(
                     DragGesture().onChanged({ value in
-                        debugPrint(value)
+                        if viewModel.difference == nil {
+                            viewModel.difference = value.location.y - viewModel.location.y
+                        }
+                        viewModel.location.y = (viewModel.location.y +
+                                                    value.location.y -
+                                                    viewModel.difference!) *
+                                                Constants.movementScale
                     }).updating($isDragging, body: { value, state, transaction in
-    //                    print(transaction)
                         state = true
+                    }).onEnded({ value in
+                        viewModel.difference = nil
+                        viewModel.location.y = 0 
                     })
                 )
             }
@@ -50,6 +65,7 @@ struct ContentView: View {
                 }.padding()
             }
         }.background(Color.white)
+        .ignoresSafeArea()
     }
 
     private func addItem() {

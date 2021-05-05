@@ -11,6 +11,8 @@ import UIKit
 class ContentViewModel: ObservableObject {
     
     @Published var alarms: [Alarm] = Storage.shared.alarms
+    @Published var location: CGPoint = CGPoint(x: 0, y: 0)
+    @Published var difference: CGFloat?
     
     init() {
         UIView.appearance().overrideUserInterfaceStyle = .light

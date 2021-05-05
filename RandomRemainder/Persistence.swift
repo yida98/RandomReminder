@@ -60,6 +60,14 @@ final class Storage: ObservableObject {
             objectWillChange.send()
         }
     }
+    
+    func deleteAlarm(with id: UUID) {
+        let index = alarms.firstIndex { $0.id == id }
+        if index != nil {
+            alarms.remove(at: index!)
+        }
+        
+    }
 }
 
 protocol PropertyListValue {}

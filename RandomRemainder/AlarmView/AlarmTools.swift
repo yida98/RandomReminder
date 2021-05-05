@@ -46,7 +46,7 @@ struct CircleHaptic: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .frame(width: 40, height: 40)
+            .frame(width: Constants.circleS, height: Constants.circleS)
             .animation(.easeOut)
             .onChange(of: condition) { some in
                 Constants.hapticFeedback(.medium)

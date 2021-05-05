@@ -11,9 +11,9 @@ import SwiftUI
 struct AlarmViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
-        VStack {
+        Group {
             content
-                .padding()
+                .padding(30)
         }
         .frame(width: Constants.screenSize.width - Constants.insetSize.width)
         .background(Color.white)
