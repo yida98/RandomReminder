@@ -13,10 +13,11 @@ class AlarmViewModel: ObservableObject {
     
     @Published var location: CGPoint = CGPoint(x: 0, y: 0)
     @Published var difference: CGFloat?
+    @Published var finished: Bool = false
     
     static private var graceLength: CGFloat = 30
-    static private var firstBound: CGFloat = -(Constants.insetSize.width/2 + 10 + AlarmViewModel.graceLength)
-    static private var secondBound: CGFloat = -(-AlarmViewModel.firstBound + 25 + AlarmViewModel.graceLength)
+    static private var firstBound: CGFloat = -(Constants.insetSize.width/2 + AlarmTools.padding + AlarmViewModel.graceLength)
+    static private var secondBound: CGFloat = -(-AlarmViewModel.firstBound + AlarmTools.spaceBetween + AlarmViewModel.graceLength)
     
     @Published var snooze: Bool = false
     @Published var delete: Bool = false
@@ -47,7 +48,7 @@ class AlarmViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .sink { value in
                 if value == true {
-                    
+                    self.snoozeAlarm()
                 }
                 self.snooze = value
             }
@@ -56,12 +57,19 @@ class AlarmViewModel: ObservableObject {
         deletePublisher
             .receive(on: RunLoop.main)
             .sink { value in
+                if value == true {
+                    self.deleteAlarm()
+                }
                 self.delete = value
             }
             .store(in: &cancellable)
     }
     
     func deleteAlarm() {
-        
+        debugPrint("Delete")
+    }
+    
+    func snoozeAlarm() {
+        debugPrint("Snooze")
     }
 }

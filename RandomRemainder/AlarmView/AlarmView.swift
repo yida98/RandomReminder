@@ -28,15 +28,19 @@ struct AlarmView: View {
             .gesture(
                 DragGesture()
                     .onChanged({ value in
+                        viewModel.finished = false
                         if viewModel.difference == nil {
                             viewModel.difference = value.location.x - viewModel.location.x
                         }
-                        viewModel.location.x += value.location.x - viewModel.difference!
-                        viewModel.location.x = viewModel.location.x * Constants.movementScale
+                        viewModel.location.x = (viewModel.location.x +
+                                                    value.location.x -
+                                                    viewModel.difference!) *
+                                                Constants.movementScale
                     })
                     .onEnded({ value in
                         viewModel.difference = nil
                         viewModel.location.x = 0
+                        viewModel.finished = true
                     })
             )
         }

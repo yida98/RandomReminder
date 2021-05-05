@@ -11,27 +11,25 @@ struct AlarmTools: View {
     
     @EnvironmentObject var viewModel: AlarmViewModel
     
-    static private var graceLength: CGFloat = 30
-    static private var firstBound: CGFloat = -(Constants.insetSize.width/2 + 10 + AlarmTools.graceLength)
-    static private var secondBound: CGFloat = -(-AlarmTools.firstBound + 25 + AlarmTools.graceLength)
+    static let spaceBetween: CGFloat = 20
+    static let padding: CGFloat = 10
     
     var body: some View {
         HStack {
             Spacer()
             ZStack {
                 Circle()
-                    .fill(viewModel.delete ? Color.red : Color.white)
+                    .fill(viewModel.delete ? Color.red : Color.lightGrey3)
                     .scaleEffect(viewModel.delete ? 1 : 0.7, anchor: .center)
-                    .frame(width: 40, height: 40)
-                    .animation(.easeOut)
+                    .modifier(CircleHaptic(condition: $viewModel.snooze))
                 Image(systemName: "trash.fill")
                     .foregroundColor(Color.white)
             }
-            .padding(.trailing, 25)
+            .padding(.trailing, AlarmTools.spaceBetween)
             
             ZStack {
                 Circle()
-                    .fill(viewModel.snooze ? Color.blue : Color.white)
+                    .fill(viewModel.snooze ? Color.blue : Color.lightGrey3)
                     .scaleEffect(viewModel.snooze ? 1 : 0.7, anchor: .center)
                     .modifier(CircleHaptic(condition: $viewModel.snooze))
                 Image(systemName: "moon.zzz.fill")

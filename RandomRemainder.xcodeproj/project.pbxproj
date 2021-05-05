@@ -62,8 +62,8 @@
 		E47FCC3926426D38000D7EFF /* AlarmView */ = {
 			isa = PBXGroup;
 			children = (
-				E40E79B0264118CE00A810AD /* AlarmView.swift */,
 				E47FCC3726425332000D7EFF /* AlarmViewModel.swift */,
+				E40E79B0264118CE00A810AD /* AlarmView.swift */,
 				E47FCC33264219E4000D7EFF /* AlarmTools.swift */,
 				E40E79B226412A7700A810AD /* AlarmViewModifier.swift */,
 			);
