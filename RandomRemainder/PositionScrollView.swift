@@ -33,13 +33,18 @@ struct PositionScrollView<T: View>: View {
                 .onChanged({ value in
                     offset = value.startLocation.y
                     let difference = value.location.y - value.startLocation.y
-                    if difference > 0 {
+                    if difference > 0 && difference <= 40 {
                         print("upper bound")
+                        location.y = (value.location.y + difference) * ((40 - difference)/40)
+                    } else if difference <= 0 {
+                        location.y = (value.location.y + difference) * Constants.movementScale
                     }
-                    location.y = (value.location.y + difference) * Constants.movementScale
                 })
                 .onEnded({ value in
-                    
+                    let difference = value.location.y - value.startLocation.y
+                    if difference > 0 {
+                        location.y = 0
+                    }
                 })
         )
     }

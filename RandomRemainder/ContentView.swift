@@ -26,21 +26,21 @@ struct ContentView: View {
                         .frame(width: Constants.circleM, height: Constants.circleM)
                     Spacer()
                 }
-                PositionScrollView(location: $viewModel.location) {
-                    ForEach(storage.alarms) { alarm in
-                        AlarmView()
-                            .environmentObject(AlarmViewModel(alarm: alarm))
-                            .padding(.bottom, 20)
-                    }
-
-                }
-//                ScrollView {
+//                PositionScrollView(location: $viewModel.location) {
 //                    ForEach(storage.alarms) { alarm in
 //                        AlarmView()
 //                            .environmentObject(AlarmViewModel(alarm: alarm))
 //                            .padding(.bottom, 20)
 //                    }
-//                }
+//
+//                }.frame(height: 120)
+                ScrollView {
+                    ForEach(storage.alarms) { alarm in
+                        AlarmView()
+                            .environmentObject(AlarmViewModel(alarm: alarm))
+                            .padding(.bottom, 20)
+                    }
+                }
 //                .simultaneousGesture(
 //                    DragGesture().onChanged({ value in
 //                        if viewModel.difference == nil {
