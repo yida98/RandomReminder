@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class ContentViewModel: ObservableObject {
     
@@ -35,6 +36,10 @@ class ContentViewModel: ObservableObject {
 //                let nsError = error as NSError
 //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
 //            }
+    }
+    
+    func addAlarm() {
+        
     }
 
 }

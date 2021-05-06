@@ -38,6 +38,8 @@ struct AlarmView: View {
                                                     value.location.x -
                                                     viewModel.difference!) *
                                                 Constants.movementScale
+                    }).updating($isDragging, body: { value, state, transaction in
+                        state = true
                     })
                     .onEnded({ value in
                         viewModel.difference = nil

@@ -19,6 +19,7 @@
 		E47FCC34264219E4000D7EFF /* AlarmTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC33264219E4000D7EFF /* AlarmTools.swift */; };
 		E47FCC3826425332000D7EFF /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC3726425332000D7EFF /* AlarmViewModel.swift */; };
 		E47FCC3C26428CA5000D7EFF /* DrippingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */; };
+		E47FCC3E26435CBE000D7EFF /* PositionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */; };
 		E4B8FBA2263FB700003810DE /* RandomRemainderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */; };
 		E4B8FBA4263FB700003810DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8FBA3263FB700003810DE /* ContentView.swift */; };
 		E4B8FBA6263FB700003810DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4B8FBA5263FB700003810DE /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		E47FCC33264219E4000D7EFF /* AlarmTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTools.swift; sourceTree = "<group>"; };
 		E47FCC3726425332000D7EFF /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
 		E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrippingShape.swift; sourceTree = "<group>"; };
+		E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionScrollView.swift; sourceTree = "<group>"; };
 		E4B8FB9E263FB700003810DE /* RandomRemainder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomRemainder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRemainderApp.swift; sourceTree = "<group>"; };
 		E4B8FBA3263FB700003810DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */,
 				E4B8FBA3263FB700003810DE /* ContentView.swift */,
 				E40E79A42640B1D200A810AD /* ContentViewModel.swift */,
+				E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */,
 				E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */,
 				E4756524263FCA5400BB1C53 /* NavigationBar.swift */,
 				E47FCC3926426D38000D7EFF /* AlarmView */,
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E40E79AD2640EBA900A810AD /* Time.swift in Sources */,
+				E47FCC3E26435CBE000D7EFF /* PositionScrollView.swift in Sources */,
 				E475652F263FF8C800BB1C53 /* String+Ext.swift in Sources */,
 				E40E79A72640B33500A810AD /* Constants.swift in Sources */,
 				E47FCC34264219E4000D7EFF /* AlarmTools.swift in Sources */,

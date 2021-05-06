@@ -22,7 +22,6 @@ struct DrippingShape: Shape {
     }
     
     func path(in rect: CGRect) -> Path {
-        print(location)
         var path = Path()
         
         let topL = CGPoint(x: rect.minX, y: rect.minY)
