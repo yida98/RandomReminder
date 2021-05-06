@@ -29,20 +29,16 @@ struct AlarmView: View {
             }
             .offset(x: viewModel.location.x)
             .gesture(
-                DragGesture()
+                DragGesture(minimumDistance: 1, coordinateSpace: .local)
                     .onChanged({ value in
-                        if viewModel.difference == nil {
-                            viewModel.difference = value.location.x - viewModel.location.x
-                        }
                         viewModel.location.x = (viewModel.location.x +
                                                     value.location.x -
-                                                    viewModel.difference!) *
+                                                    value.startLocation.x) *
                                                 Constants.movementScale
                     }).updating($isDragging, body: { value, state, transaction in
                         state = true
                     })
                     .onEnded({ value in
-                        viewModel.difference = nil
                         if viewModel.snooze {
                             viewModel.snoozeAlarm()
                         }

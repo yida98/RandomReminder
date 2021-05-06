@@ -12,11 +12,10 @@ struct DrippingShape: Shape {
     
     var location: CGPoint
     private var initialValue: CGPoint = CGPoint(x: 0, y: Constants.scrollViewOffset)
-    private var maxDrip: CGFloat
+    static var maxDrip: CGFloat = 190
     
-    init(location: CGPoint, maxDrip: CGFloat = 190) {
+    init(location: CGPoint) {
         self.location = location
-        self.maxDrip = maxDrip
     }
     
     func path(in rect: CGRect) -> Path {
@@ -28,7 +27,7 @@ struct DrippingShape: Shape {
         let botL = CGPoint(x: rect.minX, y: rect.maxY)
         var botC = CGPoint(x: CGFloat(botL.x + botR.x)/2, y: rect.maxY)
         if location.y > initialValue.y {
-            let y = min(rect.maxY + (location.y*0.5) - (initialValue.y/2), maxDrip)
+            let y = min(rect.maxY + (location.y*0.5) - (initialValue.y/2), DrippingShape.maxDrip)
             botC = CGPoint(x: (botL.x + botR.x)/2, y: y)
         }
         path.move(to: topL)

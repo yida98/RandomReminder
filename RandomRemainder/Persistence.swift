@@ -66,7 +66,10 @@ final class Storage: ObservableObject {
         if index != nil {
             alarms.remove(at: index!)
         }
-        
+    }
+    
+    func addAlarm(alarm: Alarm) {
+        alarms.append(alarm)
     }
 }
 

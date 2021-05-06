@@ -16,21 +16,27 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            TitleBar().environmentObject(viewModel)
-            ZStack {
-                PositionScrollView(
-                    axes: .vertical,
-                    showIndicators: true,
-                    offsetChanged: { point in
-                        viewModel.location = point
-                }, content: {
-                    ForEach(storage.alarms) { alarm in
-                        AlarmView()
-                            .environmentObject(AlarmViewModel(alarm: alarm))
-                            .padding(.bottom, 20)
+            TitleBar()
+                .environmentObject(viewModel)
+            PositionScrollView(
+                axes: .vertical,
+                showIndicators: true,
+                offsetChanged: { point in
+                    viewModel.location = point
+                    if viewModel.location.y >= DrippingShape.maxDrip
+                        && viewModel.isReady == false {
+                        viewModel.isReady = true 
+                    } else if viewModel.location.y < DrippingShape.maxDrip
+                                && viewModel.isReady == true {
+                        viewModel.isReady = false
                     }
-                })
-            }
+            }, content: {
+                ForEach(storage.alarms) { alarm in
+                    AlarmView()
+                        .environmentObject(AlarmViewModel(alarm: alarm))
+                        .padding(.bottom, 20)
+                }
+            })
             HStack {
                 HStack {
                     #if os(iOS)

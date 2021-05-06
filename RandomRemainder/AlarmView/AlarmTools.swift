@@ -13,20 +13,10 @@ struct AlarmTools: View {
     
     static let spaceBetween: CGFloat = 20
     static let padding: CGFloat = 10
+    static let inset: CGFloat = Constants.insetSize.width/2 + AlarmTools.padding
     
     var body: some View {
         HStack {
-            Spacer()
-            ZStack {
-                Circle()
-                    .fill(viewModel.delete ? Color.red : Color.lightGrey3)
-                    .scaleEffect(viewModel.delete ? 1 : 0.7, anchor: .center)
-                    .modifier(CircleHaptic(condition: viewModel.snooze))
-                Image(systemName: "trash.fill")
-                    .foregroundColor(Color.white)
-            }
-            .padding(.trailing, AlarmTools.spaceBetween)
-            
             ZStack {
                 Circle()
                     .fill(viewModel.snooze ? Color.blue : Color.lightGrey3)
@@ -35,7 +25,17 @@ struct AlarmTools: View {
                 Image(systemName: "moon.zzz.fill")
                     .foregroundColor(Color.white)
             }
-            .padding(.trailing, Constants.insetSize.width/2 + 10)
+            .padding(.leading, AlarmTools.inset)
+            Spacer()
+            ZStack {
+                Circle()
+                    .fill(viewModel.delete ? Color.red : Color.lightGrey3)
+                    .scaleEffect(viewModel.delete ? 1 : 0.7, anchor: .center)
+                    .modifier(CircleHaptic(condition: viewModel.delete))
+                Image(systemName: "trash.fill")
+                    .foregroundColor(Color.white)
+            }
+            .padding(.trailing, AlarmTools.inset)
         }
     }
 }

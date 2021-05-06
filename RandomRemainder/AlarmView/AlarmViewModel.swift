@@ -26,7 +26,7 @@ class AlarmViewModel: ObservableObject {
             .combineLatest($location)
             .map { result in
                 let x = result.1.x
-                return (x < AlarmViewModel.firstBound && x > AlarmViewModel.secondBound)
+                return (x > AlarmTools.inset)
             }
             .eraseToAnyPublisher()
     }
@@ -35,7 +35,7 @@ class AlarmViewModel: ObservableObject {
             .combineLatest($location)
             .map { result in
                 let x = result.1.x
-                return (x < AlarmViewModel.secondBound)
+                return (x < -AlarmTools.inset)
             }
             .eraseToAnyPublisher()
     }
@@ -58,7 +58,7 @@ class AlarmViewModel: ObservableObject {
     }
     
     func deleteAlarm() {
-        Storage().deleteAlarm(with: alarm.id)
+//        Storage().deleteAlarm(with: alarm.id)
     }
     
     func snoozeAlarm() {
@@ -67,7 +67,7 @@ class AlarmViewModel: ObservableObject {
 }
 
 extension AlarmViewModel {
-    static private var graceLength: CGFloat = 30
-    static private var firstBound: CGFloat = -(Constants.insetSize.width/2 + AlarmTools.padding + AlarmViewModel.graceLength)
-    static private var secondBound: CGFloat = -(-AlarmViewModel.firstBound + AlarmTools.spaceBetween + AlarmViewModel.graceLength)
+    static private let graceLength: CGFloat = 30
+    static private let leftBound: CGFloat = AlarmTools.inset
+    static private let rightBound: CGFloat = -AlarmTools.inset
 }
