@@ -21,7 +21,7 @@ struct AlarmTools: View {
                 Circle()
                     .fill(viewModel.delete ? Color.red : Color.lightGrey3)
                     .scaleEffect(viewModel.delete ? 1 : 0.7, anchor: .center)
-                    .modifier(CircleHaptic(condition: $viewModel.snooze))
+                    .modifier(CircleHaptic(condition: viewModel.snooze))
                 Image(systemName: "trash.fill")
                     .foregroundColor(Color.white)
             }
@@ -31,7 +31,7 @@ struct AlarmTools: View {
                 Circle()
                     .fill(viewModel.snooze ? Color.blue : Color.lightGrey3)
                     .scaleEffect(viewModel.snooze ? 1 : 0.7, anchor: .center)
-                    .modifier(CircleHaptic(condition: $viewModel.snooze))
+                    .modifier(CircleHaptic(condition: viewModel.snooze))
                 Image(systemName: "moon.zzz.fill")
                     .foregroundColor(Color.white)
             }
@@ -42,7 +42,7 @@ struct AlarmTools: View {
 
 struct CircleHaptic: ViewModifier {
     
-    @Binding var condition: Bool
+    var condition: Bool
     
     func body(content: Content) -> some View {
         content
