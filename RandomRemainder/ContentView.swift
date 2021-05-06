@@ -16,52 +16,8 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            TitleBar().environmentObject(viewModel)
             ZStack {
-                DrippingShape(location: viewModel.location)
-                    .fill(Constants.highlightColour)
-                    .frame(height: 120)
-                ZStack {
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: Constants.circleS, height: Constants.circleS)
-                    Circle()
-                        .fill(Constants.highlightColour)
-                        .frame(
-                            width: Constants.circleS * viewModel.scale,
-                            height: Constants.circleS * viewModel.scale
-                        )
-                    Image(systemName: "plus")
-                        .resizable()
-                        .foregroundColor(Constants.highlightColour)
-                        .frame(width: Constants.circleS*0.4, height: Constants.circleS*0.4)
-                
-                }.offset(y: 90)
-                .mask(
-                    DrippingShape(location: viewModel.location)
-                        .fill(Constants.highlightColour)
-                        .frame(height: 120)
-                )
-            }
-                
-            ZStack {
-//                VStack {
-//                    ZStack {
-//                        Circle()
-//                            .fill(Color.white)
-//                            .frame(width: Constants.circleS, height: Constants.circleS)
-//                        Circle()
-//                            .fill(Color.blue)
-//                            .frame(
-//                                width: Constants.circleS * viewModel.scale,
-//                                height: Constants.circleS * viewModel.scale
-//                            )
-//                        Image(systemName: "plus")
-//                            .resizable()
-//                            .foregroundColor(Color.blue)
-//                            .frame(width: Constants.circleS*0.4, height: Constants.circleS*0.4)
-//                    }.padding(.top, 10)
-//                    Spacer()
-//                }
                 PositionScrollView(
                     axes: .vertical,
                     showIndicators: true,
