@@ -16,48 +16,66 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            DrippingShape(location: $viewModel.location)
-                .fill(Color.blue)
-                .frame(height: 120)
             ZStack {
-                VStack {
+                DrippingShape(location: viewModel.location)
+                    .fill(Constants.highlightColour)
+                    .frame(height: 120)
+                ZStack {
                     Circle()
-                        .fill(Color.blue)
-                        .frame(width: Constants.circleM, height: Constants.circleM)
-                    Spacer()
-                }
-//                PositionScrollView(location: $viewModel.location) {
-//                    ForEach(storage.alarms) { alarm in
-//                        AlarmView()
-//                            .environmentObject(AlarmViewModel(alarm: alarm))
-//                            .padding(.bottom, 20)
-//                    }
-//
-//                }.frame(height: 120)
-                ScrollView {
+                        .fill(Color.white)
+                        .frame(width: Constants.circleS, height: Constants.circleS)
+                    Circle()
+                        .fill(Constants.highlightColour)
+                        .frame(
+                            width: Constants.circleS * viewModel.scale,
+                            height: Constants.circleS * viewModel.scale
+                        )
+                    Image(systemName: "plus")
+                        .resizable()
+                        .foregroundColor(Constants.highlightColour)
+                        .frame(width: Constants.circleS*0.4, height: Constants.circleS*0.4)
+                
+                }.offset(y: 90)
+                .mask(
+                    DrippingShape(location: viewModel.location)
+                        .fill(Constants.highlightColour)
+                        .frame(height: 120)
+                )
+            }
+                
+            ZStack {
+//                VStack {
+//                    ZStack {
+//                        Circle()
+//                            .fill(Color.white)
+//                            .frame(width: Constants.circleS, height: Constants.circleS)
+//                        Circle()
+//                            .fill(Color.blue)
+//                            .frame(
+//                                width: Constants.circleS * viewModel.scale,
+//                                height: Constants.circleS * viewModel.scale
+//                            )
+//                        Image(systemName: "plus")
+//                            .resizable()
+//                            .foregroundColor(Color.blue)
+//                            .frame(width: Constants.circleS*0.4, height: Constants.circleS*0.4)
+//                    }.padding(.top, 10)
+//                    Spacer()
+//                }
+                PositionScrollView(
+                    axes: .vertical,
+                    showIndicators: true,
+                    offsetChanged: { point in
+                        viewModel.location = point
+                }, content: {
                     ForEach(storage.alarms) { alarm in
                         AlarmView()
                             .environmentObject(AlarmViewModel(alarm: alarm))
                             .padding(.bottom, 20)
                     }
-                }
-//                .simultaneousGesture(
-//                    DragGesture().onChanged({ value in
-//                        if viewModel.difference == nil {
-//                            viewModel.difference = value.location.y - viewModel.location.y
-//                        }
-//                        viewModel.location.y = (viewModel.location.y +
-//                                                    value.location.y -
-//                                                    viewModel.difference!) *
-//                                                Constants.movementScale
-//                    })
-//                    .onEnded({ value in
-//                        viewModel.difference = nil
-//                        viewModel.location.y = 0
-//                    })
-//                )
+                })
             }
-            NavigationView {
+            HStack {
                 HStack {
                     #if os(iOS)
                     EditButton()

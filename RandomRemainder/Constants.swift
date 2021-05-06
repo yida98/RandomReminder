@@ -24,6 +24,10 @@ struct Constants {
         let impactMed = UIImpactFeedbackGenerator(style: intensity)
         impactMed.impactOccurred()
     }
+    
+    static let scrollViewOffset: CGFloat = 128
+    
+    static let highlightColour: Color = Color.green
 }
 
 extension Color {

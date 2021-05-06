@@ -10,15 +10,13 @@ import SwiftUI
 
 struct DrippingShape: Shape {
     
-    @Binding var location: CGPoint
+    var location: CGPoint
+    private var initialValue: CGPoint = CGPoint(x: 0, y: Constants.scrollViewOffset)
+    private var maxDrip: CGFloat
     
-    init(location: Binding<CGPoint>) {
-        self._location = location
-    }
-    
-    var animatableData: CGPoint.AnimatableData {
-        get { return CGPoint.AnimatableData(location.x, location.y) }
-        set { location = CGPoint(x: newValue.first, y: newValue.second) }
+    init(location: CGPoint, maxDrip: CGFloat = 190) {
+        self.location = location
+        self.maxDrip = maxDrip
     }
     
     func path(in rect: CGRect) -> Path {
@@ -28,7 +26,11 @@ struct DrippingShape: Shape {
         let topR = CGPoint(x: rect.maxX, y: rect.minY)
         let botR = CGPoint(x: rect.maxX, y: rect.maxY)
         let botL = CGPoint(x: rect.minX, y: rect.maxY)
-        let botC = CGPoint(x: (botL.x + botR.x)/2, y: rect.maxY + location.y)
+        var botC = CGPoint(x: CGFloat(botL.x + botR.x)/2, y: rect.maxY)
+        if location.y > initialValue.y {
+            let y = min(rect.maxY + (location.y*0.5) - (initialValue.y/2), maxDrip)
+            botC = CGPoint(x: (botL.x + botR.x)/2, y: y)
+        }
         path.move(to: topL)
         path.addLine(to: topR)
         path.addLine(to: botR)

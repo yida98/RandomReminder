@@ -11,41 +11,39 @@ import SwiftUI
 struct PositionScrollView<T: View>: View {
     
     var content: T
+    let axes: Axis.Set
+    let showIndicators: Bool
+    let offsetChanged: (CGPoint) -> Void
     
-    @GestureState var isDragging: Bool = false
-    @Binding var location: CGPoint
-    
-    @State var offset: CGFloat?
-    
-    let gesture: DragGesture = DragGesture()
-    
-    init(location: Binding<CGPoint>, @ViewBuilder content: () -> T) {
-        self._location = location
+    init(axes: Axis.Set = .vertical,
+         showIndicators: Bool = true,
+         offsetChanged: @escaping ((CGPoint) -> Void) = { _ in },
+         @ViewBuilder content: () -> T) {
+        self.axes = axes
+        self.showIndicators = showIndicators
+        self.offsetChanged = offsetChanged
         self.content = content()
     }
     
     var body: some View {
-        LazyVStack {
+        ScrollView(axes, showsIndicators: showIndicators) {
+            GeometryReader { geometry in
+                Color.clear
+                    .preference(
+                        key: OffsetPreferenceKey.self,
+                        value: geometry.frame(in: .named("scrollView")).origin
+                    )
+            }
             content
-        }.offset(y: location.y)
-        .simultaneousGesture(
-            gesture
-                .onChanged({ value in
-                    offset = value.startLocation.y
-                    let difference = value.location.y - value.startLocation.y
-                    if difference > 0 && difference <= 40 {
-                        print("upper bound")
-                        location.y = (value.location.y + difference) * ((40 - difference)/40)
-                    } else if difference <= 0 {
-                        location.y = (value.location.y + difference) * Constants.movementScale
-                    }
-                })
-                .onEnded({ value in
-                    let difference = value.location.y - value.startLocation.y
-                    if difference > 0 {
-                        location.y = 0
-                    }
-                })
-        )
+        }.onPreferenceChange(OffsetPreferenceKey.self, perform: offsetChanged)
+    }
+    
+}
+
+struct OffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGPoint = .zero
+    
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
+        value = nextValue()
     }
 }

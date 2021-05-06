@@ -19,6 +19,15 @@ class ContentViewModel: ObservableObject {
         UIView.appearance().overrideUserInterfaceStyle = .light
     }
     
+    var scale: CGFloat {
+        var scale: CGFloat = 0
+        let difference = (location.y - Constants.scrollViewOffset)
+        if difference > 0 && difference <= 120 {
+            scale = (120 - difference)/120
+        }
+        return scale
+    }
+    
     func deleteAlarm(offsets: IndexSet) {
         let objects = offsets.map { Storage.shared.alarms[$0] }
         Storage.shared.alarms = Storage.shared.alarms.filter { object in
