@@ -45,7 +45,6 @@ class ContentViewModel: ObservableObject {
 //    }
     
     func addAlarm() {
-        Constants.hapticFeedback(.medium)
         
 //        let newAlarm = Alarm(text: "Whaaps")
 //        Storage.shared.addAlarm(alarm: newAlarm)

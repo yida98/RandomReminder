@@ -26,7 +26,8 @@ struct Constants {
         impactMed.impactOccurred()
     }
     
-    static let scrollViewOffset: CGFloat = 128
+    static let navBarHeight: CGFloat = 80
+    static let scrollViewOffset: CGFloat = Constants.navBarHeight + 8
     
     static let highlightColour: Color = Color.green
 }

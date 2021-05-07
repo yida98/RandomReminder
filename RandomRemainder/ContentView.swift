@@ -37,17 +37,6 @@ struct ContentView: View {
                         .padding(.bottom, 20)
                 }
             })
-            HStack {
-                HStack {
-                    #if os(iOS)
-                    EditButton()
-                    #endif
-                    Spacer()
-                    Button(action: viewModel.addAlarm) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }.padding()
-            }
         }.background(Color.white)
         .ignoresSafeArea()
         

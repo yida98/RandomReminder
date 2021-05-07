@@ -15,28 +15,33 @@ struct TitleBar: View {
         ZStack {
             DrippingShape(location: viewModel.location)
                 .fill(Constants.highlightColour)
-                .frame(height: 120)
-            ZStack {
-                Circle()
-                    .fill(Color.white)
-                    .frame(width: Constants.circleS, height: Constants.circleS)
-                Circle()
-                    .fill(Constants.highlightColour)
-                    .frame(
-                        width: Constants.circleS * viewModel.scale,
-                        height: Constants.circleS * viewModel.scale
-                    )
-                Image(systemName: "plus")
-                    .resizable()
-                    .foregroundColor(Constants.highlightColour)
-                    .frame(width: Constants.circleS*0.4, height: Constants.circleS*0.4)
-            
-            }.offset(y: 90)
-            .mask(
-                DrippingShape(location: viewModel.location)
-                    .fill(Constants.highlightColour)
-                    .frame(height: 120)
-            )
+                .frame(height: Constants.navBarHeight)
+            Image("cat")
+                .resizable()
+                .foregroundColor(Constants.highlightColour)
+                .frame(width: Constants.circleL, height: Constants.circleL)
+                .offset(y: Constants.navBarHeight + 30)
+                .mask(
+                    DrippingShape(location: viewModel.location)
+                        .fill(Constants.highlightColour)
+                        .frame(height: Constants.navBarHeight)
+                )
+            HStack {
+                Spacer()
+                VStack {
+                    Spacer()
+                    Button {
+                        viewModel.addAlarm()
+                    } label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: Constants.circleXS, height: Constants.circleXS)
+                            .foregroundColor(Color.white)
+                    }.padding()
+                    .padding(.trailing, 10)
+                }
+
+            }.frame(height: Constants.navBarHeight)
         }
     }
 }
