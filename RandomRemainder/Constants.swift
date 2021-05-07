@@ -12,7 +12,8 @@ struct Constants {
     
     static let screenSize: CGRect = UIWindow().bounds
     static let insetSize: CGSize = CGSize(width: 60, height: 60)
-    
+        
+    static let circleXS: CGFloat = 20
     static let circleS: CGFloat = 40
     static let circleM: CGFloat = 60
     static let circleL: CGFloat = 80

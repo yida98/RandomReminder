@@ -24,6 +24,14 @@ struct AlarmView: View {
                         Text(viewModel.alarm.text)
                     }
                     Spacer()
+                    Circle()
+                        .fill(Color.orange)
+                        .frame(width: Constants.circleS, height: Constants.circleS)
+                        .overlay(
+                            Text(String(viewModel.alarm.occurence))
+                                .foregroundColor(Color.white)
+                                .font(.title)
+                        )
                 }
                 .modifier(AlarmViewModifier())
             }

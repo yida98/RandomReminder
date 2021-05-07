@@ -58,7 +58,7 @@ class AlarmViewModel: ObservableObject {
     }
     
     func deleteAlarm() {
-//        Storage().deleteAlarm(with: alarm.id)
+        Storage.shared.deleteAlarm(with: alarm.id)
     }
     
     func snoozeAlarm() {

@@ -10,10 +10,8 @@ import UIKit
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
-    
-    @Published var alarms: [Alarm] = Storage.shared.alarms
+
     @Published var location: CGPoint = CGPoint(x: 0, y: 0)
-    @Published var difference: CGFloat?
     @Published var isReady: Bool = false {
         willSet {
             if newValue == true {
