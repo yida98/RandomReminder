@@ -13,7 +13,7 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: ContentViewModel
     
     @ObservedObject var storage: Storage = Storage.shared
-
+    @GestureState var isDragging: Bool = false 
     var body: some View {
         VStack {
             TitleBar()
@@ -26,8 +26,8 @@ struct ContentView: View {
                     if viewModel.location.y >= DrippingShape.maxDrip
                         && viewModel.isReady == false {
                         viewModel.isReady = true 
-                    } else if viewModel.location.y < DrippingShape.maxDrip
-                                && viewModel.isReady == true {
+                    }
+                    if viewModel.location.y <= Constants.scrollViewOffset {
                         viewModel.isReady = false
                     }
             }, content: {
@@ -50,6 +50,8 @@ struct ContentView: View {
             }
         }.background(Color.white)
         .ignoresSafeArea()
+        
+        
     }
 }
     

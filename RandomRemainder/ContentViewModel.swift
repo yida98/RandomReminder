@@ -14,14 +14,16 @@ class ContentViewModel: ObservableObject {
     @Published var location: CGPoint = CGPoint(x: 0, y: 0)
     @Published var isReady: Bool = false {
         willSet {
-            if newValue == true {
-                addAlarm()
+            if newValue == true  {
+                Constants.hapticFeedback(.medium)
             }
         }
     }
     
+    
     init() {
         UIView.appearance().overrideUserInterfaceStyle = .light
+        
     }
     
     var scale: CGFloat {
@@ -44,8 +46,9 @@ class ContentViewModel: ObservableObject {
     
     func addAlarm() {
         Constants.hapticFeedback(.medium)
-        let newAlarm = Alarm(text: "Whaaps")
-        Storage.shared.addAlarm(alarm: newAlarm)
+        
+//        let newAlarm = Alarm(text: "Whaaps")
+//        Storage.shared.addAlarm(alarm: newAlarm)
     }
 
 }

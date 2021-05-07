@@ -37,24 +37,26 @@ struct AlarmView: View {
             }
             .offset(x: viewModel.location.x)
             .gesture(
-                DragGesture(minimumDistance: 1, coordinateSpace: .local)
-                    .onChanged({ value in
-                        viewModel.location.x = (viewModel.location.x +
-                                                    value.location.x -
-                                                    value.startLocation.x) *
-                                                Constants.movementScale
-                    }).updating($isDragging, body: { value, state, transaction in
-                        state = true
-                    })
-                    .onEnded({ value in
-                        if viewModel.snooze {
-                            viewModel.snoozeAlarm()
-                        }
-                        if viewModel.delete {
-                            viewModel.deleteAlarm()
-                        }
-                        viewModel.location.x = 0
-                    })
+                TapGesture().simultaneously(with: 
+                    DragGesture(minimumDistance: 1, coordinateSpace: .local)
+                        .onChanged({ value in
+                            viewModel.location.x = (viewModel.location.x +
+                                                        value.location.x -
+                                                        value.startLocation.x) *
+                                                    Constants.movementScale
+                        }).updating($isDragging, body: { value, state, transaction in
+                            state = true
+                        })
+                        .onEnded({ value in
+                            if viewModel.snooze {
+                                viewModel.snoozeAlarm()
+                            }
+                            if viewModel.delete {
+                                viewModel.deleteAlarm()
+                            }
+                            viewModel.location.x = 0
+                        })
+                                       )
             )
         }
     }
