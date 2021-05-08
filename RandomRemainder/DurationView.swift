@@ -9,16 +9,15 @@ import SwiftUI
 
 struct DurationView: View {
     @EnvironmentObject var viewModel: CreateAlarmViewModel
-    @State var from: Date = Date.toNearestHour(from: Date(), lowerBound: true)
-    @State var to: Date = Date.toNearestHour(from: Date(), lowerBound: false)
+    var index: Int
     var body: some View {
         HStack {
-            DatePicker("from", selection: $from, displayedComponents: [.hourAndMinute])
+            DatePicker("from", selection: $viewModel.duration[index], displayedComponents: [.hourAndMinute])
                 .labelsHidden()
             Spacer()
             Text("to")
             Spacer()
-            DatePicker("to", selection: $to, displayedComponents: [.hourAndMinute])
+            DatePicker("to", selection: $viewModel.duration[index + 1], displayedComponents: [.hourAndMinute])
                 .labelsHidden()
         }
     }
@@ -33,11 +32,5 @@ extension Date {
         dateComponent.minute = 0
         let newDate = Calendar.current.date(from: dateComponent)
         return newDate!
-    }
-}
-
-struct DurationView_Previews: PreviewProvider {
-    static var previews: some View {
-        DurationView()
     }
 }

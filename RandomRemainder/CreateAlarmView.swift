@@ -15,7 +15,7 @@ struct CreateAlarmView: View {
     var body: some View {
         VStack {
             Group {
-                VStack {
+                VStack(spacing: 20) {
                     TextField("Alarm Name", text: $viewModel.title)
                     Stepper("\(viewModel.occurence) occurences a day", value: $viewModel.occurence, in: 1...100)
                     Toggle("Randomize alerts", isOn: $viewModel.random)
@@ -39,8 +39,9 @@ struct CreateAlarmView: View {
                                     Spacer()
                                 }
                                 List {
-                                    ForEach(viewModel.duration) { time in
-                                        DurationView().environmentObject(viewModel)
+                                    ForEach(0..<viewModel.duration.count/2, id: \.self) { index in
+                                        DurationView(index: index * 2)
+                                            .environmentObject(viewModel)
                                     }
                                     .listRowBackground(Color.clear)
                                 }.padding()
@@ -61,11 +62,13 @@ struct CreateAlarmView: View {
                         }
                         .buttonStyle(MyButtonStyle())
                         Button {
-                            viewModel.done()
+                            viewModel.done {
+                                isPresenting = false
+                            }
                         } label: {
                             Text("Done")
                                 .foregroundColor(viewModel.finished ? Color.darkGrey : Color.lightGrey)
-                        }.disabled(viewModel.finished)
+                        }.disabled(!viewModel.finished)
                         .buttonStyle(MyButtonStyle())
 
                     }.padding(.top, 20)
