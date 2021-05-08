@@ -71,6 +71,18 @@ final class Storage: ObservableObject {
     func addAlarm(alarm: Alarm) {
         alarms.append(alarm)
     }
+    
+    func updateAlarm(_ alarm: Alarm, for id: UUID) {
+        Storage.shared.alarms = Storage.shared.alarms.map {
+            if $0.id == id {
+                $0.text = alarm.text
+                $0.duration = alarm.duration
+                $0.occurence = alarm.occurence
+                $0.randomFrequency = alarm.randomFrequency
+            }
+            return $0
+        }
+    }
 }
 
 protocol PropertyListValue {}

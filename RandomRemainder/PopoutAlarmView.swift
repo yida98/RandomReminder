@@ -1,5 +1,5 @@
 //
-//  CreateAlarmView.swift
+//  PopoutAlarmView.swift
 //  RandomRemainder
 //
 //  Created by Yida Zhang on 2021-05-03.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CreateAlarmView: View {
+struct PopoutAlarmView<T: PopoutViewModel>: View {
     
-    @EnvironmentObject var viewModel: CreateAlarmViewModel
+    @EnvironmentObject var viewModel: T
     @Binding var isPresenting: Bool
     
     var body: some View {
@@ -40,7 +40,7 @@ struct CreateAlarmView: View {
                                 }
                                 List {
                                     ForEach(0..<viewModel.duration.count/2, id: \.self) { index in
-                                        DurationView(index: index * 2)
+                                        DurationView<T>(index: index * 2)
                                             .environmentObject(viewModel)
                                     }
                                     .listRowBackground(Color.clear)

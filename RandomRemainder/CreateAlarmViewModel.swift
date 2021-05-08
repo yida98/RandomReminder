@@ -7,7 +7,19 @@
 
 import Foundation
 
-class CreateAlarmViewModel: ObservableObject {
+protocol PopoutViewModel: ObservableObject {
+    var title: String { get set }
+    var occurence: Int { get set }
+    var activeAllDay: Bool { get set }
+    var random: Bool { get set }
+    var duration: [Date] { get set }
+    var finished: Bool { get set }
+    
+    func done(_ completion: @escaping () -> Void)
+    func addDuration()
+}
+
+class CreateAlarmViewModel: PopoutViewModel {
     @Published var title: String = "" {
         willSet {
             if newValue.count >= 1 {
@@ -20,8 +32,7 @@ class CreateAlarmViewModel: ObservableObject {
     @Published var occurence: Int = 10
     @Published var activeAllDay: Bool = true
     @Published var random: Bool = true
-    @Published var duration: [Date] = [Date.toNearestHour(from: Date(), lowerBound: true),
-                                       Date.toNearestHour(from: Date(), lowerBound: false)]
+    @Published var duration: [Date] = Constants.defaultDates
     
     @Published var finished: Bool = false
     
@@ -32,8 +43,7 @@ class CreateAlarmViewModel: ObservableObject {
     }
     
     func addDuration() {
-        duration.append(Date.toNearestHour(from: Date(), lowerBound: true))
-        duration.append(Date.toNearestHour(from: Date(), lowerBound: false))
+        duration.append(contentsOf: Constants.defaultDates)
     }
 }
 

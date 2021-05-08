@@ -19,6 +19,8 @@ class AlarmViewModel: ObservableObject {
     
     @ObservedObject var alarm: Alarm
     
+    @Published var isPresenting: Bool = false
+    
     private var cancellable = Set<AnyCancellable>()
 
     private var snoozePublisher: AnyPublisher<Bool, Never> {

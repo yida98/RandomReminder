@@ -30,6 +30,9 @@ struct Constants {
     static let scrollViewOffset: CGFloat = Constants.navBarHeight + 8
     
     static let highlightColour: Color = Color.green
+    
+    static let defaultDates = [Date.toNearestHour(from: Date(), lowerBound: true),
+                               Date.toNearestHour(from: Date(), lowerBound: false)]
 }
 
 extension Color {

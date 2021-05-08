@@ -40,7 +40,7 @@ struct ContentView: View {
         }.background(Color.white)
         .ignoresSafeArea()
         .overlay(
-            viewModel.isAdding ? CreateAlarmView(isPresenting: $viewModel.isAdding).environmentObject(CreateAlarmViewModel()) : nil
+            viewModel.isAdding ? PopoutAlarmView<CreateAlarmViewModel>(isPresenting: $viewModel.isAdding).environmentObject(CreateAlarmViewModel()) : nil
         )
         
     }

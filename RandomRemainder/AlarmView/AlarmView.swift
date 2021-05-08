@@ -59,6 +59,15 @@ struct AlarmView: View {
                                        )
             )
         }
+        .simultaneousGesture(TapGesture().onEnded({ _ in
+                print("tapping")
+                viewModel.isPresenting = true
+        }))
+        .overlay(
+            viewModel.isPresenting ? PopoutAlarmView<ModifyAlarmViewModel>(isPresenting: $viewModel.isPresenting)
+            .environmentObject(ModifyAlarmViewModel(alarm: viewModel.alarm)) : nil
+        )
+        
     }
 }
 

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct DurationView: View {
-    @EnvironmentObject var viewModel: CreateAlarmViewModel
+struct DurationView<T: PopoutViewModel>: View {
+    @EnvironmentObject var viewModel: T
     var index: Int
     var body: some View {
         HStack {
