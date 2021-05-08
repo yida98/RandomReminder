@@ -20,9 +20,12 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+    @Published var isAdding: Bool = false
     
     init() {
         UIView.appearance().overrideUserInterfaceStyle = .light
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
         
     }
     

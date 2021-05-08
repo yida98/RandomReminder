@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct Time: Codable {
+struct Time: Codable, Identifiable {
     var hour: Int
     var minute: Int
     var second: Int
+    var id: Date = Date()
 }
 
 extension Time {
     func toDateComponents() -> DateComponents {
         return DateComponents(hour: hour, minute: minute)
     }
+    static let zero = Time(hour: 0, minute: 0, second: 0)
 }

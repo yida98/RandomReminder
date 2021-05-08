@@ -33,6 +33,10 @@ struct Constants {
 }
 
 extension Color {
+    static let darkGrey: Color = Color(white: 0.25)
+    static let darkGrey2: Color = Color(white: 0.2)
+    static let darkGrey3: Color = Color(white: 0.15)
+    
     static let lightGrey: Color = Color(white: 0.85)
     static let lightGrey2: Color = Color(white: 0.9)
     static let lightGrey3: Color = Color(white: 0.95)

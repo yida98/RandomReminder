@@ -31,7 +31,7 @@ struct TitleBar: View {
                 VStack {
                     Spacer()
                     Button {
-                        viewModel.addAlarm()
+                        viewModel.isAdding.toggle()
                     } label: {
                         Image(systemName: "plus")
                             .resizable()

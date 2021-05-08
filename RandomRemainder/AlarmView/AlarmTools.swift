@@ -20,7 +20,7 @@ struct AlarmTools: View {
             ZStack {
                 Circle()
                     .fill(viewModel.snooze ? Color.blue : Color.lightGrey3)
-                    .scaleEffect(viewModel.snooze ? 1 : 0.7, anchor: .center)
+                    .scaleEffect(viewModel.snooze ? 1 : 0.5, anchor: .center)
                     .modifier(CircleHaptic(condition: viewModel.snooze))
                 Image(systemName: "moon.zzz.fill")
                     .foregroundColor(Color.white)
@@ -30,7 +30,7 @@ struct AlarmTools: View {
             ZStack {
                 Circle()
                     .fill(viewModel.delete ? Color.red : Color.lightGrey3)
-                    .scaleEffect(viewModel.delete ? 1 : 0.7, anchor: .center)
+                    .scaleEffect(viewModel.delete ? 1 : 0.5, anchor: .center)
                     .modifier(CircleHaptic(condition: viewModel.delete))
                 Image(systemName: "trash.fill")
                     .foregroundColor(Color.white)

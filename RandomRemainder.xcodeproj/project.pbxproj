@@ -21,6 +21,8 @@
 		E47FCC3C26428CA5000D7EFF /* DrippingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */; };
 		E47FCC3E26435CBE000D7EFF /* PositionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */; };
 		E47FCC442643ACB9000D7EFF /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC432643ACB9000D7EFF /* TitleBar.swift */; };
+		E47FCC46264609AD000D7EFF /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC45264609AD000D7EFF /* DurationView.swift */; };
+		E47FCC4826460AFA000D7EFF /* CreateAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */; };
 		E4B8FBA2263FB700003810DE /* RandomRemainderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */; };
 		E4B8FBA4263FB700003810DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8FBA3263FB700003810DE /* ContentView.swift */; };
 		E4B8FBA6263FB700003810DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4B8FBA5263FB700003810DE /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrippingShape.swift; sourceTree = "<group>"; };
 		E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionScrollView.swift; sourceTree = "<group>"; };
 		E47FCC432643ACB9000D7EFF /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
+		E47FCC45264609AD000D7EFF /* DurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationView.swift; sourceTree = "<group>"; };
+		E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlarmViewModel.swift; sourceTree = "<group>"; };
 		E4B8FB9E263FB700003810DE /* RandomRemainder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomRemainder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRemainderApp.swift; sourceTree = "<group>"; };
 		E4B8FBA3263FB700003810DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,7 +116,9 @@
 				E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */,
 				E4756524263FCA5400BB1C53 /* NavigationBar.swift */,
 				E47FCC3926426D38000D7EFF /* AlarmView */,
+				E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */,
 				E475652C263FEA9800BB1C53 /* CreateAlarmView.swift */,
+				E47FCC45264609AD000D7EFF /* DurationView.swift */,
 				E4B8FBA5263FB700003810DE /* Assets.xcassets */,
 				E4B8FBAA263FB700003810DE /* Persistence.swift */,
 				E47FCC3A2642865E000D7EFF /* Model */,
@@ -208,9 +214,11 @@
 				E40E79A72640B33500A810AD /* Constants.swift in Sources */,
 				E47FCC34264219E4000D7EFF /* AlarmTools.swift in Sources */,
 				E4B8FBAE263FB701003810DE /* RandomRemainder.xcdatamodeld in Sources */,
+				E47FCC4826460AFA000D7EFF /* CreateAlarmViewModel.swift in Sources */,
 				E4756523263FC0C200BB1C53 /* Alarm.swift in Sources */,
 				E4B8FBAB263FB700003810DE /* Persistence.swift in Sources */,
 				E40E79B326412A7700A810AD /* AlarmViewModifier.swift in Sources */,
+				E47FCC46264609AD000D7EFF /* DurationView.swift in Sources */,
 				E40E79A52640B1D200A810AD /* ContentViewModel.swift in Sources */,
 				E4B8FBA4263FB700003810DE /* ContentView.swift in Sources */,
 				E475652D263FEA9800BB1C53 /* CreateAlarmView.swift in Sources */,
