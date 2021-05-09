@@ -22,7 +22,14 @@ class ContentViewModel: ObservableObject {
     
     @Published var isPresenting: Bool = false
     @Published var adding: Bool = true
-    var tappedAlarm: Alarm?
+    var tappedAlarm: Alarm? {
+        willSet {
+            if newValue != nil {
+                adding = false
+                isPresenting = true
+            }
+        }
+    }
     
     init() {
         UIView.appearance().overrideUserInterfaceStyle = .light

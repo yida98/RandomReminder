@@ -11,6 +11,8 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
     
     @EnvironmentObject var viewModel: T
     @Binding var isPresenting: Bool
+    @Binding var adding: Bool
+    @Binding var alarm: Alarm?
     
     var body: some View {
         VStack {
@@ -57,6 +59,8 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
                         Spacer()
                         Button {
                             isPresenting = false
+                            adding = true
+                            alarm = nil
                         } label: {
                             Text("Cancel")
                         }
@@ -64,6 +68,8 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
                         Button {
                             viewModel.done {
                                 isPresenting = false
+                                adding = true
+                                alarm = nil
                             }
                         } label: {
                             Text("Done")

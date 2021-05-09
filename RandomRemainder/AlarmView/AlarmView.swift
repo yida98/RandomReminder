@@ -11,6 +11,8 @@ struct AlarmView: View {
     
     @EnvironmentObject var viewModel: AlarmViewModel
     @GestureState private var isDragging: Bool = false
+        
+    @Binding var isTapped: Alarm?
     
     var body: some View {
         ZStack {
@@ -61,14 +63,8 @@ struct AlarmView: View {
         }
         .simultaneousGesture(TapGesture().onEnded({ _ in
                 print("tapping")
-                viewModel.isPresenting = true
+                isTapped = viewModel.alarm
         }))
         
-    }
-}
-
-struct AlarmView_Previews: PreviewProvider {
-    static var previews: some View {
-        AlarmView()
     }
 }

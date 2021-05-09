@@ -8,7 +8,15 @@
 import Foundation
 
 class ModifyAlarmViewModel: PopoutViewModel {
-    @Published var title: String
+    @Published var title: String {
+        willSet {
+            if newValue.count >= 1 {
+                finished = true
+            } else {
+                finished = false
+            }
+        }
+    }
     @Published var occurence: Int
     @Published var activeAllDay: Bool
     @Published var random: Bool

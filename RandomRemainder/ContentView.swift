@@ -32,17 +32,14 @@ struct ContentView: View {
                     }
             }, content: {
                 ForEach(storage.alarms) { alarm in
-                    AlarmView()
+                    AlarmView(isTapped: $viewModel.tappedAlarm)
                         .environmentObject(AlarmViewModel(alarm: alarm))
                         .padding(.bottom, 20)
-                        .onTapGesture {
-                            print(alarm)
-                        }
                 }
             })
         }.background(Color.white)
         .ignoresSafeArea()
-        .modifier(OverlayModifier(isPresenting: $viewModel.isPresenting, viewModel: viewModel))
+        .modifier(OverlayModifier(isPresenting: $viewModel.isPresenting, adding: $viewModel.adding, alarm: $viewModel.tappedAlarm, viewModel: viewModel))
         
     }
 }
@@ -50,10 +47,14 @@ struct ContentView: View {
 struct OverlayModifier: ViewModifier {
     
     var isPresenting: Binding<Bool>
+    var adding: Binding<Bool>
+    var alarm: Binding<Alarm?>
     var viewModel: ContentViewModel
     
-    init(isPresenting: Binding<Bool>, viewModel: ContentViewModel) {
+    init(isPresenting: Binding<Bool>, adding: Binding<Bool>, alarm: Binding<Alarm?>, viewModel: ContentViewModel) {
         self.isPresenting = isPresenting
+        self.adding = adding
+        self.alarm = alarm
         self.viewModel = viewModel
     }
     
@@ -62,13 +63,13 @@ struct OverlayModifier: ViewModifier {
             if viewModel.adding {
                 content
                     .overlay(
-                        PopoutAlarmView<CreateAlarmViewModel>(isPresenting: isPresenting).environmentObject(CreateAlarmViewModel())
+                        PopoutAlarmView<CreateAlarmViewModel>(isPresenting: isPresenting, adding: adding, alarm: alarm).environmentObject(CreateAlarmViewModel())
                     )
             } else {
                 if viewModel.tappedAlarm != nil {
                     content
                         .overlay(
-                            PopoutAlarmView<ModifyAlarmViewModel>(isPresenting: isPresenting).environmentObject(ModifyAlarmViewModel(alarm: viewModel.tappedAlarm!))
+                            PopoutAlarmView<ModifyAlarmViewModel>(isPresenting: isPresenting, adding: adding, alarm: alarm).environmentObject(ModifyAlarmViewModel(alarm: viewModel.tappedAlarm!))
                         )
                 } else {
                     content
