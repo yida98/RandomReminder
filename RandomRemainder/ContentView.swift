@@ -35,14 +35,48 @@ struct ContentView: View {
                     AlarmView()
                         .environmentObject(AlarmViewModel(alarm: alarm))
                         .padding(.bottom, 20)
+                        .onTapGesture {
+                            print(alarm)
+                        }
                 }
             })
         }.background(Color.white)
         .ignoresSafeArea()
-        .overlay(
-            viewModel.isAdding ? PopoutAlarmView<CreateAlarmViewModel>(isPresenting: $viewModel.isAdding).environmentObject(CreateAlarmViewModel()) : nil
-        )
+        .modifier(OverlayModifier(isPresenting: $viewModel.isPresenting, viewModel: viewModel))
         
+    }
+}
+
+struct OverlayModifier: ViewModifier {
+    
+    var isPresenting: Binding<Bool>
+    var viewModel: ContentViewModel
+    
+    init(isPresenting: Binding<Bool>, viewModel: ContentViewModel) {
+        self.isPresenting = isPresenting
+        self.viewModel = viewModel
+    }
+    
+    func body(content: Content) -> some View {
+        if viewModel.isPresenting {
+            if viewModel.adding {
+                content
+                    .overlay(
+                        PopoutAlarmView<CreateAlarmViewModel>(isPresenting: isPresenting).environmentObject(CreateAlarmViewModel())
+                    )
+            } else {
+                if viewModel.tappedAlarm != nil {
+                    content
+                        .overlay(
+                            PopoutAlarmView<ModifyAlarmViewModel>(isPresenting: isPresenting).environmentObject(ModifyAlarmViewModel(alarm: viewModel.tappedAlarm!))
+                        )
+                } else {
+                    content
+                }
+            }
+        } else {
+            content
+        }
     }
 }
     

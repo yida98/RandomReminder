@@ -20,7 +20,9 @@ class ContentViewModel: ObservableObject {
         }
     }
     
-    @Published var isAdding: Bool = false
+    @Published var isPresenting: Bool = false
+    @Published var adding: Bool = true
+    var tappedAlarm: Alarm?
     
     init() {
         UIView.appearance().overrideUserInterfaceStyle = .light
