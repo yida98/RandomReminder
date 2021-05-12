@@ -23,11 +23,13 @@ struct AlarmView: View {
                     VStack(alignment: .leading) {
                         Text(viewModel.alarm.descriptionBuilder())
                             .font(.caption)
+                            .foregroundColor(.lightGrey)
                         Text(viewModel.alarm.text)
+                            .foregroundColor(.darkGrey)
                     }
                     Spacer()
                     Circle()
-                        .fill(Color.orange)
+                        .fill(Constants.secondaryColor)
                         .frame(width: Constants.circleS, height: Constants.circleS)
                         .overlay(
                             Text(String(viewModel.alarm.occurence))

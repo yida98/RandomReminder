@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Constants {
     
+    // MARK: CG Constants
     static let screenSize: CGRect = UIWindow().bounds
     static let insetSize: CGSize = CGSize(width: 60, height: 60)
         
@@ -20,19 +21,30 @@ struct Constants {
     
     static let movementScale: CGFloat = 0.4
     
-    static func hapticFeedback(_ intensity: UIImpactFeedbackGenerator.FeedbackStyle) {
+    static let navBarHeight: CGFloat = 80
+    static let scrollViewOffset: CGFloat = Constants.navBarHeight + 8
         
+}
+
+extension Constants {
+    
+    // MARK: Functions
+    static func hapticFeedback(_ intensity: UIImpactFeedbackGenerator.FeedbackStyle) {
         let impactMed = UIImpactFeedbackGenerator(style: intensity)
         impactMed.impactOccurred()
     }
     
-    static let navBarHeight: CGFloat = 80
-    static let scrollViewOffset: CGFloat = Constants.navBarHeight + 8
-    
-    static let highlightColour: Color = Color.green
-    
     static let defaultDates = [Date.toNearestHour(from: Date(), lowerBound: true),
                                Date.toNearestHour(from: Date(), lowerBound: false)]
+    
+}
+
+extension Constants {
+    
+    //MARK: Colors
+    static let backgroundColor: Color = .lightGrey3
+    static let highlightColour: Color = .yellow
+    static let secondaryColor: Color = .purple
 }
 
 extension Color {

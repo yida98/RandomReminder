@@ -37,14 +37,15 @@ struct ContentView: View {
                         .padding(.bottom, 20)
                 }
             })
-        }.background(Color.white)
+        }.background(Constants.backgroundColor)
         .ignoresSafeArea()
+        .overlay(viewModel.allowsNotification ? nil : AllowNotificationsScreen())
         .modifier(OverlayModifier(isPresenting: $viewModel.isPresenting, adding: $viewModel.adding, alarm: $viewModel.tappedAlarm, viewModel: viewModel))
         
     }
 }
 
-struct OverlayModifier: ViewModifier {
+fileprivate struct OverlayModifier: ViewModifier {
     
     var isPresenting: Binding<Bool>
     var adding: Binding<Bool>

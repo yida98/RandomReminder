@@ -64,7 +64,7 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
                         } label: {
                             Text("Cancel")
                         }
-                        .buttonStyle(MyButtonStyle())
+                        .buttonStyle(BasicButtonStyle())
                         Button {
                             viewModel.done {
                                 isPresenting = false
@@ -75,7 +75,7 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
                             Text("Done")
                                 .foregroundColor(viewModel.finished ? Color.darkGrey : Color.lightGrey)
                         }.disabled(!viewModel.finished)
-                        .buttonStyle(MyButtonStyle())
+                        .buttonStyle(BasicButtonStyle())
 
                     }.padding(.top, 20)
                 }.padding(40)
@@ -88,27 +88,6 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
         .background(Color.black.opacity(0.4))
         .ignoresSafeArea()
     }
-}
-
-struct MyButtonStyle: ButtonStyle {
-    
-    func makeBody(configuration: Configuration) -> some View {
-        MyButton(configuration: configuration)
-    }
-    
-    struct MyButton: View {
-        let configuration: MyButtonStyle.Configuration
-        
-        var body: some View {
-            configuration.label
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .foregroundColor(Color.darkGrey)
-                .background(configuration.isPressed ? Color.lightGrey : Color.lightGrey3)
-                .cornerRadius(5)
-        }
-    }
-    
 }
 
 extension Date: Identifiable {

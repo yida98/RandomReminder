@@ -70,6 +70,8 @@ final class Storage: ObservableObject {
     
     func addAlarm(alarm: Alarm) {
         alarms.append(alarm)
+        // TODO: Create the notifications
+        LocalNotificationManager.shared.addNotification(alarm: alarm)
     }
     
     func updateAlarm(_ alarm: Alarm, for id: UUID) {

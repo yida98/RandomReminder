@@ -8,7 +8,7 @@
 import Foundation
 
 class ModifyAlarmViewModel: PopoutViewModel {
-    @Published var title: String {
+    var title: String {
         willSet {
             if newValue.count >= 1 {
                 finished = true
@@ -40,6 +40,7 @@ class ModifyAlarmViewModel: PopoutViewModel {
     func done(_ completion: @escaping () -> Void) {
         let alarm = Alarm(text: title, duration: activeAllDay ? [Time]() : duration.map { $0.toTime() }, occurence: occurence, randomFrequency: random)
         Storage.shared.updateAlarm(alarm, for: id)
+        completion()
     }
     
     func addDuration() {

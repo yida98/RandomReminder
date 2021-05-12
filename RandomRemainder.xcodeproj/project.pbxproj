@@ -13,7 +13,6 @@
 		E40E79B1264118CE00A810AD /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40E79B0264118CE00A810AD /* AlarmView.swift */; };
 		E40E79B326412A7700A810AD /* AlarmViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40E79B226412A7700A810AD /* AlarmViewModifier.swift */; };
 		E4756523263FC0C200BB1C53 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4756522263FC0C200BB1C53 /* Alarm.swift */; };
-		E4756525263FCA5400BB1C53 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4756524263FCA5400BB1C53 /* NavigationBar.swift */; };
 		E475652D263FEA9800BB1C53 /* PopoutAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */; };
 		E475652F263FF8C800BB1C53 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652E263FF8C800BB1C53 /* String+Ext.swift */; };
 		E47FCC34264219E4000D7EFF /* AlarmTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC33264219E4000D7EFF /* AlarmTools.swift */; };
@@ -24,6 +23,10 @@
 		E47FCC46264609AD000D7EFF /* DurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC45264609AD000D7EFF /* DurationView.swift */; };
 		E47FCC4826460AFA000D7EFF /* CreateAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */; };
 		E47FCC4A26469009000D7EFF /* ModifyAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC4926469009000D7EFF /* ModifyAlarmViewModel.swift */; };
+		E47FCC4C2648EF9D000D7EFF /* AllowNotificationsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC4B2648EF9D000D7EFF /* AllowNotificationsScreen.swift */; };
+		E47FCC4E26492BDE000D7EFF /* BasicButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC4D26492BDE000D7EFF /* BasicButtonStyle.swift */; };
+		E47FCC50264A45CE000D7EFF /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC4F264A45CE000D7EFF /* LocalNotificationManager.swift */; };
+		E47FCC52264A5600000D7EFF /* TitleBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC51264A5600000D7EFF /* TitleBarButtonStyle.swift */; };
 		E4B8FBA2263FB700003810DE /* RandomRemainderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */; };
 		E4B8FBA4263FB700003810DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8FBA3263FB700003810DE /* ContentView.swift */; };
 		E4B8FBA6263FB700003810DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4B8FBA5263FB700003810DE /* Assets.xcassets */; };
@@ -39,7 +42,6 @@
 		E40E79B0264118CE00A810AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		E40E79B226412A7700A810AD /* AlarmViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModifier.swift; sourceTree = "<group>"; };
 		E4756522263FC0C200BB1C53 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
-		E4756524263FCA5400BB1C53 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoutAlarmView.swift; sourceTree = "<group>"; };
 		E475652E263FF8C800BB1C53 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E47FCC33264219E4000D7EFF /* AlarmTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTools.swift; sourceTree = "<group>"; };
@@ -50,6 +52,10 @@
 		E47FCC45264609AD000D7EFF /* DurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationView.swift; sourceTree = "<group>"; };
 		E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlarmViewModel.swift; sourceTree = "<group>"; };
 		E47FCC4926469009000D7EFF /* ModifyAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAlarmViewModel.swift; sourceTree = "<group>"; };
+		E47FCC4B2648EF9D000D7EFF /* AllowNotificationsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsScreen.swift; sourceTree = "<group>"; };
+		E47FCC4D26492BDE000D7EFF /* BasicButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButtonStyle.swift; sourceTree = "<group>"; };
+		E47FCC4F264A45CE000D7EFF /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		E47FCC51264A5600000D7EFF /* TitleBarButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarButtonStyle.swift; sourceTree = "<group>"; };
 		E4B8FB9E263FB700003810DE /* RandomRemainder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomRemainder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRemainderApp.swift; sourceTree = "<group>"; };
 		E4B8FBA3263FB700003810DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +85,9 @@
 				E40E79B226412A7700A810AD /* AlarmViewModifier.swift */,
 				E47FCC4926469009000D7EFF /* ModifyAlarmViewModel.swift */,
 				E47FCC33264219E4000D7EFF /* AlarmTools.swift */,
+				E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */,
+				E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */,
+				E47FCC45264609AD000D7EFF /* DurationView.swift */,
 			);
 			path = AlarmView;
 			sourceTree = "<group>";
@@ -90,6 +99,35 @@
 				E40E79AC2640EBA900A810AD /* Time.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E47FCC53264B5C3C000D7EFF /* Button Styles */ = {
+			isa = PBXGroup;
+			children = (
+				E47FCC4D26492BDE000D7EFF /* BasicButtonStyle.swift */,
+				E47FCC51264A5600000D7EFF /* TitleBarButtonStyle.swift */,
+			);
+			path = "Button Styles";
+			sourceTree = "<group>";
+		};
+		E47FCC54264B6603000D7EFF /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				E40E79A42640B1D200A810AD /* ContentViewModel.swift */,
+				E4B8FBA3263FB700003810DE /* ContentView.swift */,
+				E47FCC432643ACB9000D7EFF /* TitleBar.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		E47FCC55264B661B000D7EFF /* HelperView */ = {
+			isa = PBXGroup;
+			children = (
+				E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */,
+				E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */,
+				E47FCC4B2648EF9D000D7EFF /* AllowNotificationsScreen.swift */,
+			);
+			path = HelperView;
 			sourceTree = "<group>";
 		};
 		E4B8FB95263FB700003810DE = {
@@ -112,18 +150,13 @@
 			isa = PBXGroup;
 			children = (
 				E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */,
-				E40E79A42640B1D200A810AD /* ContentViewModel.swift */,
-				E4B8FBA3263FB700003810DE /* ContentView.swift */,
-				E47FCC432643ACB9000D7EFF /* TitleBar.swift */,
-				E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */,
-				E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */,
-				E4756524263FCA5400BB1C53 /* NavigationBar.swift */,
+				E47FCC54264B6603000D7EFF /* MainView */,
+				E47FCC55264B661B000D7EFF /* HelperView */,
+				E47FCC53264B5C3C000D7EFF /* Button Styles */,
 				E47FCC3926426D38000D7EFF /* AlarmView */,
-				E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */,
-				E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */,
-				E47FCC45264609AD000D7EFF /* DurationView.swift */,
 				E4B8FBA5263FB700003810DE /* Assets.xcassets */,
 				E4B8FBAA263FB700003810DE /* Persistence.swift */,
+				E47FCC4F264A45CE000D7EFF /* LocalNotificationManager.swift */,
 				E47FCC3A2642865E000D7EFF /* Model */,
 				E40E79A62640B33500A810AD /* Constants.swift */,
 				E475652E263FF8C800BB1C53 /* String+Ext.swift */,
@@ -211,11 +244,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47FCC4E26492BDE000D7EFF /* BasicButtonStyle.swift in Sources */,
 				E40E79AD2640EBA900A810AD /* Time.swift in Sources */,
+				E47FCC50264A45CE000D7EFF /* LocalNotificationManager.swift in Sources */,
 				E47FCC3E26435CBE000D7EFF /* PositionScrollView.swift in Sources */,
+				E47FCC4C2648EF9D000D7EFF /* AllowNotificationsScreen.swift in Sources */,
 				E475652F263FF8C800BB1C53 /* String+Ext.swift in Sources */,
 				E47FCC4A26469009000D7EFF /* ModifyAlarmViewModel.swift in Sources */,
 				E40E79A72640B33500A810AD /* Constants.swift in Sources */,
+				E47FCC52264A5600000D7EFF /* TitleBarButtonStyle.swift in Sources */,
 				E47FCC34264219E4000D7EFF /* AlarmTools.swift in Sources */,
 				E4B8FBAE263FB701003810DE /* RandomRemainder.xcdatamodeld in Sources */,
 				E47FCC4826460AFA000D7EFF /* CreateAlarmViewModel.swift in Sources */,
@@ -231,7 +268,6 @@
 				E47FCC3826425332000D7EFF /* AlarmViewModel.swift in Sources */,
 				E40E79B1264118CE00A810AD /* AlarmView.swift in Sources */,
 				E47FCC442643ACB9000D7EFF /* TitleBar.swift in Sources */,
-				E4756525263FCA5400BB1C53 /* NavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

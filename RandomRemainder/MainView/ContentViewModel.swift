@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import SwiftUI
+import UserNotifications
+import Combine
 
 class ContentViewModel: ObservableObject {
 
@@ -22,6 +24,8 @@ class ContentViewModel: ObservableObject {
     
     @Published var isPresenting: Bool = false
     @Published var adding: Bool = true
+    @Published var allowsNotification: Bool = false
+    
     var tappedAlarm: Alarm? {
         willSet {
             if newValue != nil {
@@ -32,10 +36,26 @@ class ContentViewModel: ObservableObject {
     }
     
     init() {
+        UISetup()
+        LocalNotificationManager.requestNotificationPermission { success, error in
+            if success {
+                Just(success)
+                    .receive(on: RunLoop.main)
+                    .assign(to: &self.$allowsNotification)
+            }
+        }
+    }
+    
+    private func UISetup() {
         UIView.appearance().overrideUserInterfaceStyle = .light
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
-        
+    }
+    
+    func openSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:]) { value in
+            print("Open Settings")
+        }
     }
     
     var scale: CGFloat {

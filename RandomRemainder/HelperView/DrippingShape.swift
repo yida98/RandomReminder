@@ -14,6 +14,9 @@ struct DrippingShape: Shape {
     private var initialValue: CGPoint = CGPoint(x: 0, y: Constants.scrollViewOffset)
     static var maxDrip: CGFloat = 190
     
+    private static var curveControl1: CGFloat = 80
+    private static var curveControl2: CGFloat = 30
+    
     init(location: CGPoint) {
         self.location = location
     }
@@ -34,12 +37,12 @@ struct DrippingShape: Shape {
         path.addLine(to: topR)
         path.addLine(to: botR)
         
-        let control1 = CGPoint(x: botR.x - 30, y: botR.y)
-        let control2 = CGPoint(x: botC.x + 70, y: botC.y)
+        let control1 = CGPoint(x: botR.x - DrippingShape.curveControl2, y: botR.y)
+        let control2 = CGPoint(x: botC.x + DrippingShape.curveControl1, y: botC.y)
         path.addCurve(to: botC, control1: control1, control2: control2)
         
-        let control3 = CGPoint(x: botC.x - 70, y: botC.y)
-        let control4 = CGPoint(x: botL.x + 30, y: botL.y)
+        let control3 = CGPoint(x: botC.x - DrippingShape.curveControl1, y: botC.y)
+        let control4 = CGPoint(x: botL.x + DrippingShape.curveControl2, y: botL.y)
         path.addCurve(to: botL, control1: control3, control2: control4)
                 
         path.closeSubpath()
