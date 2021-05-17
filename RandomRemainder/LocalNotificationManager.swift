@@ -24,19 +24,28 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
+    func addNotification(alarm: Alarm, trigger: UNNotificationTrigger, notificationId: String) {
+        let content = LocalNotificationManager.contentBuilder(alarm: alarm)
+        let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+        sendNotification(with: request)
+    }
+    
     func addNotification(alarm: Alarm) {
+        let content = LocalNotificationManager.contentBuilder(alarm: alarm)
         for occurence in 0..<alarm.occurence {
-            let content = UNMutableNotificationContent()
-            content.title = alarm.text
-            content.body = alarm.text
-            content.sound = LocalNotificationManager.notificationSound
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-    //            let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: <#T##DateComponents#>, repeats: <#T##Bool#>)
-            
-            let request = UNNotificationRequest(identifier: alarm.notificationIdString(with: String(occurence)), content: content, trigger: trigger) // Schedule the notification.
+            let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: alarm.executionTimes()[occurence].toDateComponents(), repeats: false)
+            debugPrint(alarm.executionTimes()[occurence].toDateComponents().debugDescription)
+            let request = UNNotificationRequest(identifier: alarm.notificationIdString(with: String(occurence)), content: content, trigger: calendarTrigger)
             sendNotification(with: request)
         }
+    }
+    
+    private static func contentBuilder(alarm: Alarm) -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = alarm.text
+        content.body = alarm.text
+        content.sound = LocalNotificationManager.notificationSound
+        return content
         
     }
     
@@ -62,7 +71,23 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         print(userInfo) // the payload that is attached to the push notification
         // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
         print(notification.request)
-        completionHandler([.banner, .sound])
+        if let requestAlarm = Alarm.getAlarm(from: notification.request.identifier) {
+            if let occurenceNumber = Alarm.getOccurence(from: notification.request.identifier) {
+                let newTrigger = UNCalendarNotificationTrigger(dateMatching: requestAlarm.executionTimes()[occurenceNumber].toDateComponents(), repeats: false)
+                addNotification(alarm: requestAlarm, trigger: newTrigger, notificationId: notification.request.identifier)
+                completionHandler([.banner, .sound])
+            }
+        }
 
+    }
+    
+    func removeAllNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    }
+    
+    func removeAllNotifications(with identifiers: [String]) {
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
     }
 }

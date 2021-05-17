@@ -67,11 +67,20 @@ extension Alarm {
         return self.id.uuidString + suffix
     }
     
-    static func getAlarm(with notificationString: String) -> Alarm? {
+    static func getAlarm(from notificationId: String) -> Alarm? {
         
-        let result = Storage.shared.alarms.first { notificationString.hasPrefix($0.notificationIdString()) }
+        let result = Storage.shared.alarms.first { notificationId.hasPrefix($0.notificationIdString()) }
         
         return result
+    }
+    
+    static func getOccurence(from notificationId: String) -> Int? {
+        if let alarm = Alarm.getAlarm(from: notificationId) {
+            if let result = Int(notificationId[(alarm.id.uuidString.count - 1)..<notificationId.count]) {
+                return result
+            }
+        }
+        return nil
     }
     
     func totalMinutesADay() -> Int {
@@ -100,17 +109,22 @@ extension Alarm {
         return result
     }
     
-    func executionTimes() {
+    func executionTimes(isConstant: Bool = false) -> [Time] {
         var result = [Time]()
-        var elapsingMinutes = Int(totalMinutesADay() / occurence)
+        let elapsingMinutes = Int(totalMinutesADay() / occurence)
         var range = minutesRange()
         if duration.isEmpty {
             range = [Int](0...Time.endOfDay.inMinutes())
         }
         
         for i in 0..<occurence {
-            
-        }
-        
+            var minute = i * elapsingMinutes
+            if !isConstant {
+                minute = Int.random(in: minute..<(minute + elapsingMinutes))
+            }
+            let newTime = Time(minute: range[minute])
+            result.append(newTime)
+        } 
+        return result
     }
 }

@@ -8,10 +8,19 @@
 import Foundation
 
 struct Time: Codable, Identifiable {
-    var hour: Int = 0
-    var minute: Int = 0
-    var second: Int = 0
+    var hour: Int
+    var minute: Int
+    var second: Int
     var id: Date = Date()
+    
+    init(hour: Int = 0, minute: Int = 0, second: Int = 0, id: Date = Date()) {
+        let extraMinutes = Int(second / 60)
+        self.second = second % 60
+        let extraHours = Int(minute / 60)
+        self.minute = (minute % 60) + extraMinutes
+        self.hour = hour + extraHours
+        self.id = id
+    }
 }
 
 extension Time {
@@ -29,6 +38,16 @@ extension Time {
         let second = max(inMinutes(), time.inMinutes())
         
         return [Int](first...second)
+    }
+    
+    func randomTime(in minuteRange: Range<Int>) -> Int {
+        return Int.random(in: minuteRange)
+    }
+    
+    mutating func incrementBy(minutes: Int) {
+        let hours = Int(minutes/60)
+        hour += hours
+        minute += minutes%60
     }
     
     static var endOfDay: Time = Time(hour: 23, minute: 59, second: 59)
