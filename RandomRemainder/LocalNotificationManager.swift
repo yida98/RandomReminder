@@ -54,7 +54,7 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         center.add(request) { (error : Error?) in
              if let theError = error {
                  // Handle any errors
-                print(theError)
+                Logger.log(.error, message: theError.localizedDescription)
              }
         }
     }
@@ -70,7 +70,7 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         print(userInfo) // the payload that is attached to the push notification
         // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
-        print(notification.request)
+        Logger.log(.notification, message: notification.debugDescription)
         if let requestAlarm = Alarm.getAlarm(from: notification.request.identifier) {
             if let occurenceNumber = Alarm.getOccurence(from: notification.request.identifier) {
                 let newTrigger = UNCalendarNotificationTrigger(dateMatching: requestAlarm.executionTimes()[occurenceNumber].toDateComponents(), repeats: false)
@@ -80,6 +80,10 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
 
     }
+    
+}
+
+extension LocalNotificationManager {
     
     func removeAllNotifications() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
