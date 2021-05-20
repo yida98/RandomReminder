@@ -24,7 +24,33 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
-    func addNotification(alarm: Alarm, trigger: UNNotificationTrigger, notificationId: String) {
+    internal func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        
+    }
+    
+    internal func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        print(userInfo) // the payload that is attached to the push notification
+        // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
+        Logger.log(.notificationReceived, message: notification.debugDescription)
+        if let requestAlarm = Alarm.getAlarm(from: notification.request.identifier) {
+            if let occurenceNumber = Alarm.getOccurence(from: notification.request.identifier) {
+                let newTrigger = UNCalendarNotificationTrigger(dateMatching: requestAlarm.executionTimes()[occurenceNumber].toDateComponents(), repeats: false)
+                LocalNotificationManager.shared.addNotification(alarm: requestAlarm, trigger: newTrigger, notificationId: notification.request.identifier)
+                completionHandler([.banner, .sound])
+            }
+        }
+
+    }
+    
+}
+
+extension LocalNotificationManager {
+    
+    private func addNotification(alarm: Alarm, trigger: UNNotificationTrigger, notificationId: String) {
         let content = LocalNotificationManager.contentBuilder(alarm: alarm)
         let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
         sendNotification(with: request)
@@ -34,7 +60,7 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         let content = LocalNotificationManager.contentBuilder(alarm: alarm)
         for occurence in 0..<alarm.occurence {
             let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: alarm.executionTimes()[occurence].toDateComponents(), repeats: false)
-            debugPrint(alarm.executionTimes()[occurence].toDateComponents().debugDescription)
+//            debugPrint(alarm.executionTimes()[occurence].toDateComponents().debugDescription)
             let request = UNNotificationRequest(identifier: alarm.notificationIdString(with: String(occurence)), content: content, trigger: calendarTrigger)
             sendNotification(with: request)
         }
@@ -55,30 +81,10 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
              if let theError = error {
                  // Handle any errors
                 Logger.log(.error, message: theError.localizedDescription)
+             } else {
+                Logger.log(.notificationSent, message: request.debugDescription)
              }
         }
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
-        print(userInfo) // the payload that is attached to the push notification
-        // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
-        Logger.log(.notification, message: notification.debugDescription)
-        if let requestAlarm = Alarm.getAlarm(from: notification.request.identifier) {
-            if let occurenceNumber = Alarm.getOccurence(from: notification.request.identifier) {
-                let newTrigger = UNCalendarNotificationTrigger(dateMatching: requestAlarm.executionTimes()[occurenceNumber].toDateComponents(), repeats: false)
-                addNotification(alarm: requestAlarm, trigger: newTrigger, notificationId: notification.request.identifier)
-                completionHandler([.banner, .sound])
-            }
-        }
-
     }
     
 }
@@ -93,5 +99,22 @@ extension LocalNotificationManager {
     func removeAllNotifications(with identifiers: [String]) {
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+}
+
+extension LocalNotificationManager {
+    
+    func snoozeAlarm(for alarm: Alarm) {
+        let identifiers = LocalNotificationManager.generateNotificationId(for: alarm)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+    
+    private static func generateNotificationId(for alarm: Alarm) -> [String] {
+        var result = [String]()
+        for occurence in 0..<alarm.occurence {
+            let id = alarm.notificationIdString(with: String(occurence))
+            result.append(id)
+        }
+        return result
     }
 }

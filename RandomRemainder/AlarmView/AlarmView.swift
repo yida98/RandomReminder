@@ -19,25 +19,26 @@ struct AlarmView: View {
             AlarmTools()
                 .environmentObject(viewModel)
             Group {
-                HStack{
-                    VStack(alignment: .leading) {
-                        Text(viewModel.alarm.descriptionBuilder())
-                            .font(.caption)
-                            .foregroundColor(.lightGrey)
+                VStack (alignment: .leading) {
+                    Text(viewModel.alarm.descriptionBuilder())
+                        .font(.caption)
+                        .foregroundColor(.lightGrey)
+                    HStack {
                         Text(viewModel.alarm.text)
                             .foregroundColor(.darkGrey)
+                        Spacer()
+                        Circle()
+                            .fill(Constants.secondaryColor)
+                            .frame(width: Constants.circleS, height: Constants.circleS)
+                            .overlay(
+                                Text(String(viewModel.alarm.occurence))
+                                    .foregroundColor(Color.white)
+                                    .font(.title)
+                            )
                     }
-                    Spacer()
-                    Circle()
-                        .fill(Constants.secondaryColor)
-                        .frame(width: Constants.circleS, height: Constants.circleS)
-                        .overlay(
-                            Text(String(viewModel.alarm.occurence))
-                                .foregroundColor(Color.white)
-                                .font(.title)
-                        )
+                    
                 }
-                .modifier(AlarmViewModifier())
+                .modifier(AlarmViewModifier(snoozed: viewModel.alarm.snoozed))
             }
             .offset(x: viewModel.location.x)
             .gesture(

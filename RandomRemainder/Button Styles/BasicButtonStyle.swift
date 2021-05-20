@@ -31,7 +31,7 @@ struct BasicButtonStyle: ButtonStyle {
             configuration.label
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .foregroundColor(Color.darkGrey)
+                .foregroundColor(Color.darkGrey.opacity(0.8))
                 .background(configuration.isPressed ? Color.lightGrey : bgColor)
                 .cornerRadius(5)
         }

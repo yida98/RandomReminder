@@ -28,7 +28,7 @@ struct UserDefault<Value: Codable> {
                 do {
                     return try JSONDecoder().decode(Value.self, from: dataObj)
                 } catch {
-                    debugPrint("\(error) \(defaultValue)")
+                    Logger.log(.error, message: error.localizedDescription)
                 }
             }
             return defaultValue
@@ -83,6 +83,7 @@ final class Storage: ObservableObject {
                 $0.duration = alarm.duration
                 $0.occurence = alarm.occurence
                 $0.randomFrequency = alarm.randomFrequency
+                $0.snoozed = alarm.snoozed
             }
             return $0
         }

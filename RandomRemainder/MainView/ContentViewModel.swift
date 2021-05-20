@@ -24,7 +24,7 @@ class ContentViewModel: ObservableObject {
     
     @Published var isPresenting: Bool = false
     @Published var adding: Bool = true
-    @Published var allowsNotification: Bool = false
+    @Published var allowsNotification: Bool = true
     
     var tappedAlarm: Alarm? {
         willSet {

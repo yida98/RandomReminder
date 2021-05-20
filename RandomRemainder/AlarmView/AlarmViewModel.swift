@@ -64,7 +64,13 @@ class AlarmViewModel: ObservableObject {
     }
     
     func snoozeAlarm() {
-        debugPrint("Snooze")
+        alarm.snoozed.toggle()
+        Storage.shared.updateAlarm(alarm, for: alarm.id)
+        if alarm.snoozed {
+            LocalNotificationManager.shared.snoozeAlarm(for: alarm)
+        } else {
+            LocalNotificationManager.shared.addNotification(alarm: alarm)
+        }
     }
 }
 

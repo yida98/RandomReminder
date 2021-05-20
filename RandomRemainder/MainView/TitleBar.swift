@@ -27,15 +27,6 @@ struct TitleBar: View {
                         .frame(height: Constants.navBarHeight)
                 )
             HStack {
-                VStack {
-                    Spacer()
-                        Button {
-                            LocalNotificationManager.shared.addNotification(alarm: Alarm(text: "yo yo man"))
-                        } label: {
-                            Image(systemName: "plus")
-                                .resizable()
-                        }.buttonStyle(TitleBarButtonStyle())
-                }
                 Spacer()
                 VStack {
                     Spacer()

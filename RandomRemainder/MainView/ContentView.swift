@@ -15,32 +15,36 @@ struct ContentView: View {
     @ObservedObject var storage: Storage = Storage.shared
     @GestureState var isDragging: Bool = false 
     var body: some View {
-        VStack {
-            TitleBar()
-                .environmentObject(viewModel)
-            PositionScrollView(
-                axes: .vertical,
-                showIndicators: true,
-                offsetChanged: { point in
-                    viewModel.location = point
-                    if viewModel.location.y >= DrippingShape.maxDrip
-                        && viewModel.isReady == false {
-                        viewModel.isReady = true 
+        ZStack {
+            VStack {
+                TitleBar()
+                    .environmentObject(viewModel)
+                PositionScrollView(
+                    axes: .vertical,
+                    showIndicators: true,
+                    offsetChanged: { point in
+                        viewModel.location = point
+                        if viewModel.location.y >= DrippingShape.maxDrip
+                            && viewModel.isReady == false {
+                            viewModel.isReady = true
+                        }
+                        if viewModel.location.y <= Constants.scrollViewOffset {
+                            viewModel.isReady = false
+                        }
+                }, content: {
+                    ForEach(storage.alarms) { alarm in
+                        AlarmView(isTapped: $viewModel.tappedAlarm)
+                            .environmentObject(AlarmViewModel(alarm: alarm))
+                            .padding(.bottom, 20)
                     }
-                    if viewModel.location.y <= Constants.scrollViewOffset {
-                        viewModel.isReady = false
-                    }
-            }, content: {
-                ForEach(storage.alarms) { alarm in
-                    AlarmView(isTapped: $viewModel.tappedAlarm)
-                        .environmentObject(AlarmViewModel(alarm: alarm))
-                        .padding(.bottom, 20)
-                }
-            })
-        }.background(Constants.backgroundColor)
-        .ignoresSafeArea()
-        .overlay(viewModel.allowsNotification ? nil : AllowNotificationsScreen())
-        .modifier(OverlayModifier(isPresenting: $viewModel.isPresenting, adding: $viewModel.adding, alarm: $viewModel.tappedAlarm, viewModel: viewModel))
+                })
+            }.background(Constants.backgroundColor)
+            .ignoresSafeArea()
+            .modifier(OverlayModifier(isPresenting: $viewModel.isPresenting, adding: $viewModel.adding, alarm: $viewModel.tappedAlarm, viewModel: viewModel))
+            if !viewModel.allowsNotification {
+                AllowNotificationsScreen()
+            }
+        }
         
     }
 }

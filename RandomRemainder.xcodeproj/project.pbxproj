@@ -13,6 +13,7 @@
 		E40E79B1264118CE00A810AD /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40E79B0264118CE00A810AD /* AlarmView.swift */; };
 		E40E79B326412A7700A810AD /* AlarmViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40E79B226412A7700A810AD /* AlarmViewModifier.swift */; };
 		E456A01526525F9C002C149E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456A01426525F9C002C149E /* Logger.swift */; };
+		E456A0182656218E002C149E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456A0172656218E002C149E /* AlertView.swift */; };
 		E4756523263FC0C200BB1C53 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4756522263FC0C200BB1C53 /* Alarm.swift */; };
 		E475652D263FEA9800BB1C53 /* PopoutAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */; };
 		E475652F263FF8C800BB1C53 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652E263FF8C800BB1C53 /* String+Ext.swift */; };
@@ -43,6 +44,7 @@
 		E40E79B0264118CE00A810AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		E40E79B226412A7700A810AD /* AlarmViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModifier.swift; sourceTree = "<group>"; };
 		E456A01426525F9C002C149E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		E456A0172656218E002C149E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		E4756522263FC0C200BB1C53 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoutAlarmView.swift; sourceTree = "<group>"; };
 		E475652E263FF8C800BB1C53 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -79,6 +81,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E456A0162653435C002C149E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E4B8FBAA263FB700003810DE /* Persistence.swift */,
+				E47FCC4F264A45CE000D7EFF /* LocalNotificationManager.swift */,
+				E456A01426525F9C002C149E /* Logger.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		E47FCC3926426D38000D7EFF /* AlarmView */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +139,7 @@
 			children = (
 				E47FCC3D26435CBE000D7EFF /* PositionScrollView.swift */,
 				E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */,
+				E456A0172656218E002C149E /* AlertView.swift */,
 				E47FCC4B2648EF9D000D7EFF /* AllowNotificationsScreen.swift */,
 			);
 			path = HelperView;
@@ -157,11 +170,9 @@
 				E47FCC53264B5C3C000D7EFF /* Button Styles */,
 				E47FCC3926426D38000D7EFF /* AlarmView */,
 				E4B8FBA5263FB700003810DE /* Assets.xcassets */,
-				E4B8FBAA263FB700003810DE /* Persistence.swift */,
-				E47FCC4F264A45CE000D7EFF /* LocalNotificationManager.swift */,
+				E456A0162653435C002C149E /* Managers */,
 				E47FCC3A2642865E000D7EFF /* Model */,
 				E40E79A62640B33500A810AD /* Constants.swift */,
-				E456A01426525F9C002C149E /* Logger.swift */,
 				E475652E263FF8C800BB1C53 /* String+Ext.swift */,
 				E4B8FBAF263FB701003810DE /* Info.plist */,
 				E4B8FBAC263FB701003810DE /* RandomRemainder.xcdatamodeld */,
@@ -268,6 +279,7 @@
 				E475652D263FEA9800BB1C53 /* PopoutAlarmView.swift in Sources */,
 				E4B8FBA2263FB700003810DE /* RandomRemainderApp.swift in Sources */,
 				E456A01526525F9C002C149E /* Logger.swift in Sources */,
+				E456A0182656218E002C149E /* AlertView.swift in Sources */,
 				E47FCC3C26428CA5000D7EFF /* DrippingShape.swift in Sources */,
 				E47FCC3826425332000D7EFF /* AlarmViewModel.swift in Sources */,
 				E40E79B1264118CE00A810AD /* AlarmView.swift in Sources */,

@@ -14,13 +14,19 @@ class Alarm: Identifiable, Codable, ObservableObject {
     var duration: [Time]
     var occurence: Int
     var randomFrequency: Bool
+    var snoozed: Bool
     
-    init(text: String, duration: [Time] = [], occurence: Int = 3, randomFrequency: Bool = true) {
+    init(text: String,
+         duration: [Time] = [],
+         occurence: Int = 3,
+         randomFrequency: Bool = true,
+         snoozed: Bool = false) {
         self.id = UUID()
         self.text = text
         self.duration = duration
         self.occurence = occurence
         self.randomFrequency = randomFrequency
+        self.snoozed = snoozed
     }
     
 }
