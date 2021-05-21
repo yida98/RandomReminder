@@ -22,10 +22,19 @@ class CreateAlarmViewModel: PopoutViewModelParent {
 
 extension Date {
     func toTime() -> Time {
-        let dc = Calendar.current.dateComponents([.hour, .month, .minute], from: self)
+        let dc = Calendar.current.dateComponents([.hour, .minute, .second], from: self)
         let time = Time(hour: dc.hour ?? 0,
                         minute: dc.minute ?? 0,
                         second: dc.second ?? 0)
         return time
+    }
+    
+    func toDateComponents() -> DateComponents {
+        let calendar = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: self)
+        let dc = DateComponents(day: calendar.day ?? 0,
+                                hour: calendar.hour ?? 0,
+                                minute: calendar.minute ?? 0,
+                                second: calendar.second ?? 0)
+        return dc
     }
 }

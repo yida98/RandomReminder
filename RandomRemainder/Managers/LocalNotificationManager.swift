@@ -38,7 +38,9 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         Logger.log(.notificationReceived, message: notification.debugDescription)
         if let requestAlarm = Alarm.getAlarm(from: notification.request.identifier) {
             if let occurenceNumber = Alarm.getOccurence(from: notification.request.identifier) {
-                let newTrigger = UNCalendarNotificationTrigger(dateMatching: requestAlarm.executionTimes()[occurenceNumber].toDateComponents(), repeats: false)
+                var newDateComponents = requestAlarm.executionTimes()[occurenceNumber].toDateComponents()
+                newDateComponents.day = Date().addingTimeInterval(3600*24).toDateComponents().day
+                let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: false)
                 LocalNotificationManager.shared.addNotification(alarm: requestAlarm, trigger: newTrigger, notificationId: notification.request.identifier)
                 completionHandler([.banner, .sound])
             }
