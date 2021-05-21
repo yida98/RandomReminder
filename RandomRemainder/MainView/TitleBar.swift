@@ -37,6 +37,7 @@ struct TitleBar: View {
                     } label: {
                         Image(systemName: "plus")
                             .resizable()
+                        
                     }.buttonStyle(TitleBarButtonStyle())
                 }
 

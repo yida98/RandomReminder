@@ -11,7 +11,7 @@ import SwiftUI
 struct TitleBarButtonStyle: ButtonStyle {
     
     let bgColor: Color
-    init(_ bgColor: Color = .lightGrey3) {
+    init(_ bgColor: Color = .dreamPurple) {
         self.bgColor = bgColor
     }
     
@@ -23,17 +23,22 @@ struct TitleBarButtonStyle: ButtonStyle {
         let configuration: TitleBarButtonStyle.Configuration
         let bgColor: Color
         
-        init(_ backgrounColor: Color = .lightGrey3, configuration: BasicButtonStyle.Configuration) {
+        init(_ backgrounColor: Color = .dreamPurple, configuration: BasicButtonStyle.Configuration) {
             self.bgColor = backgrounColor
             self.configuration = configuration
         }
         
         var body: some View {
-            configuration.label
-                .frame(width: Constants.circleXS, height: Constants.circleXS)
-                .foregroundColor(Color.white)
-                .padding()
-                .padding(.horizontal, 10)
+            Group {
+                configuration.label
+                    .frame(width: Constants.circleXS, height: Constants.circleXS)
+                    .foregroundColor(Color.white)
+                    .padding(5)
+            }
+            .background(bgColor.opacity(0.2))
+            .cornerRadius(5)
+            .padding(6)
+            .padding(.horizontal, 10)
         }
     }
     
