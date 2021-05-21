@@ -46,8 +46,9 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
                                     Spacer()
                                 }
                                 List {
-                                    ForEach(0..<viewModel.duration.count, id: \.self) { index in
-                                        DurationView<T>(index: index)
+                                    ForEach(viewModel.duration, id: \.0.self) { tuple in
+                                        let index = viewModel.duration.firstIndex { ($0.0 == tuple.0 && $0.1 == tuple.1) }
+                                        DurationView<T>(index: index!)
                                             .environmentObject(viewModel)
                                     }
                                     .onDelete(perform: { indexSet in
