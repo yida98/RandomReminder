@@ -6,44 +6,17 @@
 //
 
 import Foundation
+import Combine
 
-protocol PopoutViewModel: ObservableObject {
-    var title: String { get set }
-    var occurence: Int { get set }
-    var activeAllDay: Bool { get set }
-    var random: Bool { get set }
-    var duration: [Date] { get set }
-    var finished: Bool { get set }
+class CreateAlarmViewModel: PopoutViewModelParent {
     
-    func done(_ completion: @escaping () -> Void)
-    func addDuration()
-}
-
-class CreateAlarmViewModel: PopoutViewModel {
-    @Published var title: String = "" {
-        willSet {
-            if newValue.count >= 1 {
-                finished = true
-            } else {
-                finished = false
-            }
-        }
-    }
-    @Published var occurence: Int = 10
-    @Published var activeAllDay: Bool = true
-    @Published var random: Bool = true
-    @Published var duration: [Date] = Constants.defaultDates
-    
-    @Published var finished: Bool = false
-    
-    func done(_ completion: @escaping () -> Void) {
-        let alarm = Alarm(text: title, duration: activeAllDay ? [Time]() : duration.map { $0.toTime() }, occurence: occurence, randomFrequency: random)
+    override func done(_ completion: @escaping () -> Void) {
+        let alarm = Alarm(text: title,
+                          duration: activeAllDay ? [Time]() : duration.flatMap { [$0.0.toTime(), $0.1.toTime()] },
+                          occurence: occurence,
+                          randomFrequency: random)
         Storage.shared.addAlarm(alarm: alarm)
         completion()
-    }
-    
-    func addDuration() {
-        duration.append(contentsOf: Constants.defaultDates)
     }
 }
 

@@ -38,14 +38,10 @@ class ContentViewModel: ObservableObject {
     init() {
         UISetup()
         LocalNotificationManager.requestNotificationPermission { success, error in
-            if success {
-                Just(success)
-                    .receive(on: RunLoop.main)
-                    .assign(to: &self.$allowsNotification)
-            } else {
-                LocalNotificationManager.shared.removeAllNotifications()
-                LocalNotificationManager.shared.removeAllNotifications(with: ["AFA2C350-F0DE-4513-AFE5-272D811EB8F7"])
-            }
+            Just(success)
+                .receive(on: RunLoop.main)
+                .assign(to: &self.$allowsNotification)
+
         }
     }
     

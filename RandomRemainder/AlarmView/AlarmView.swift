@@ -22,18 +22,21 @@ struct AlarmView: View {
                 VStack (alignment: .leading) {
                     Text(viewModel.alarm.descriptionBuilder())
                         .font(.caption)
-                        .foregroundColor(.lightGrey)
+                        .foregroundColor(.gray)
                     HStack {
                         Text(viewModel.alarm.text)
-                            .foregroundColor(.darkGrey)
+                            .foregroundColor(viewModel.alarm.snoozed ? .gray : .darkGrey)
                         Spacer()
-                        Circle()
-                            .fill(Constants.secondaryColor)
-                            .frame(width: Constants.circleS, height: Constants.circleS)
+                        
+                        Text(String(viewModel.alarm.occurence))
+                            .padding(4)
+                            .foregroundColor(Color.white)
+                            .font(.title)
+                            .background(viewModel.alarm.snoozed ? Color.gray : Constants.secondaryColor)
+                            .cornerRadius(5)
                             .overlay(
-                                Text(String(viewModel.alarm.occurence))
-                                    .foregroundColor(Color.white)
-                                    .font(.title)
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Constants.highlightColour, lineWidth: 1)
                             )
                     }
                     
@@ -65,7 +68,6 @@ struct AlarmView: View {
             )
         }
         .simultaneousGesture(TapGesture().onEnded({ _ in
-                print("tapping")
                 isTapped = viewModel.alarm
         }))
         

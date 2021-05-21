@@ -12,7 +12,8 @@ struct AlertView<Content: View>: View {
     let message: String
     let content: Content
     
-    init(message: String, @ViewBuilder content: () -> Content) {
+    init(message: String,
+         @ViewBuilder content: () -> Content = { EmptyView() as! Content } ) {
         self.message = message
         self.content = content()
     }

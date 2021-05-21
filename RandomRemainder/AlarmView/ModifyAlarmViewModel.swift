@@ -6,46 +6,35 @@
 //
 
 import Foundation
+import Combine
 
-class ModifyAlarmViewModel: PopoutViewModel {
-    var title: String {
-        willSet {
-            if newValue.count >= 1 {
-                finished = true
-            } else {
-                finished = false
-            }
-        }
-    }
-    @Published var occurence: Int
-    @Published var activeAllDay: Bool
-    @Published var random: Bool
-    @Published var duration: [Date]
-    @Published var finished: Bool = true
-    private var id: UUID
+class ModifyAlarmViewModel: PopoutViewModelParent {
+    
+    private var id: UUID?
     
     init(alarm: Alarm) {
+        super.init()
         self.title = alarm.text
         self.occurence = alarm.occurence
         self.activeAllDay = alarm.duration.isEmpty
         self.random = alarm.randomFrequency
-        self.duration = alarm.duration.map { $0.toDate() }
         if alarm.duration.isEmpty {
-            print("is empty")
             self.duration = Constants.defaultDates
+        } else {
+            self.duration = try! alarm.duration.map { $0.toDate() }.toTuple()
         }
         self.id = alarm.id
     }
     
-    func done(_ completion: @escaping () -> Void) {
-        let alarm = Alarm(text: title, duration: activeAllDay ? [Time]() : duration.map { $0.toTime() }, occurence: occurence, randomFrequency: random)
-        Storage.shared.updateAlarm(alarm, for: id)
+    override func done(_ completion: @escaping () -> Void) {
+        let alarm = Alarm(text: title,
+                          duration: activeAllDay ? [Time]() : duration.flatMap { [$0.0.toTime(), $0.1.toTime()] },
+                          occurence: occurence,
+                          randomFrequency: random)
+        Storage.shared.updateAlarm(alarm, for: id!)
         completion()
     }
     
-    func addDuration() {
-        duration.append(contentsOf: Constants.defaultDates)
-    }
 }
 
 extension Time {

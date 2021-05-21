@@ -14,7 +14,9 @@ struct TitleBar: View {
     var body: some View {
         ZStack {
             DrippingShape(location: viewModel.location)
-                .fill(Constants.highlightColour)
+                .stroke(Color.darkGrey2, lineWidth: 1)
+                .background(DrippingShape(location: viewModel.location)
+                                .foregroundColor(Constants.highlightColour))
                 .frame(height: Constants.navBarHeight)
             Image("cat")
                 .resizable()

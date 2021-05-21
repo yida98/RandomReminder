@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PopoutAlarmView<T: PopoutViewModel>: View {
+struct PopoutAlarmView<T: PopoutViewModelParent>: View {
     
     @EnvironmentObject var viewModel: T
     @Binding var isPresenting: Bool
@@ -27,24 +27,33 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
                         if !viewModel.activeAllDay {
                             ZStack {
                                 VStack {
-                                    HStack {
-                                        Spacer()
-                                        Button {
-                                            viewModel.addDuration()
-                                        } label: {
-                                            Image(systemName: "plus")
-                                                .foregroundColor(Color.gray)
+                                    ZStack {
+                                        Text(viewModel.validDates ? "" : "Non-ascending times!")
+                                            .font(.caption2)
+                                            .foregroundColor(.red)
+                                        HStack {
+                                            Spacer()
+                                            Button {
+                                                viewModel.addDuration()
+                                            } label: {
+                                                Image(systemName: "plus")
+                                                    .foregroundColor(Color.gray)
+                                            }
+                                            .padding(.top, 6)
+                                            .padding(.trailing, 6)
                                         }
-                                        .padding(.top, 6)
-                                        .padding(.trailing, 6)
                                     }
                                     Spacer()
                                 }
                                 List {
-                                    ForEach(0..<viewModel.duration.count/2, id: \.self) { index in
-                                        DurationView<T>(index: index * 2)
+                                    ForEach(0..<viewModel.duration.count, id: \.self) { index in
+                                        DurationView<T>(index: index)
                                             .environmentObject(viewModel)
                                     }
+                                    .onDelete(perform: { indexSet in
+                                        viewModel.delete(from: indexSet)
+                                    })
+                                    
                                     .listRowBackground(Color.clear)
                                 }.padding()
                                 .padding(.top, 5)

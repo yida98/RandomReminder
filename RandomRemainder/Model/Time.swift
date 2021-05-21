@@ -53,3 +53,11 @@ extension Time {
     static var endOfDay: Time = Time(hour: 23, minute: 59, second: 59)
     static var startOfDay: Time = Time(hour: 0, minute: 0, second: 0)
 }
+
+extension Time: Comparable {
+    static func < (lhs: Time, rhs: Time) -> Bool {
+        return lhs.inMinutes() < rhs.inMinutes()
+    }
+    
+    
+}

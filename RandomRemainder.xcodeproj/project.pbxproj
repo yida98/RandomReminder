@@ -14,6 +14,8 @@
 		E40E79B326412A7700A810AD /* AlarmViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40E79B226412A7700A810AD /* AlarmViewModifier.swift */; };
 		E456A01526525F9C002C149E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456A01426525F9C002C149E /* Logger.swift */; };
 		E456A0182656218E002C149E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456A0172656218E002C149E /* AlertView.swift */; };
+		E456A01A26571C2C002C149E /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456A01926571C2C002C149E /* Array+Ext.swift */; };
+		E456A01C26571EA2002C149E /* PopoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456A01B26571EA2002C149E /* PopoutViewModel.swift */; };
 		E4756523263FC0C200BB1C53 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4756522263FC0C200BB1C53 /* Alarm.swift */; };
 		E475652D263FEA9800BB1C53 /* PopoutAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */; };
 		E475652F263FF8C800BB1C53 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652E263FF8C800BB1C53 /* String+Ext.swift */; };
@@ -45,6 +47,8 @@
 		E40E79B226412A7700A810AD /* AlarmViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModifier.swift; sourceTree = "<group>"; };
 		E456A01426525F9C002C149E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E456A0172656218E002C149E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		E456A01926571C2C002C149E /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		E456A01B26571EA2002C149E /* PopoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoutViewModel.swift; sourceTree = "<group>"; };
 		E4756522263FC0C200BB1C53 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoutAlarmView.swift; sourceTree = "<group>"; };
 		E475652E263FF8C800BB1C53 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -98,9 +102,10 @@
 				E40E79B0264118CE00A810AD /* AlarmView.swift */,
 				E40E79B226412A7700A810AD /* AlarmViewModifier.swift */,
 				E47FCC4926469009000D7EFF /* ModifyAlarmViewModel.swift */,
-				E47FCC33264219E4000D7EFF /* AlarmTools.swift */,
 				E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */,
+				E456A01B26571EA2002C149E /* PopoutViewModel.swift */,
 				E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */,
+				E47FCC33264219E4000D7EFF /* AlarmTools.swift */,
 				E47FCC45264609AD000D7EFF /* DurationView.swift */,
 			);
 			path = AlarmView;
@@ -174,6 +179,7 @@
 				E47FCC3A2642865E000D7EFF /* Model */,
 				E40E79A62640B33500A810AD /* Constants.swift */,
 				E475652E263FF8C800BB1C53 /* String+Ext.swift */,
+				E456A01926571C2C002C149E /* Array+Ext.swift */,
 				E4B8FBAF263FB701003810DE /* Info.plist */,
 				E4B8FBAC263FB701003810DE /* RandomRemainder.xcdatamodeld */,
 				E4B8FBA7263FB700003810DE /* Preview Content */,
@@ -264,6 +270,8 @@
 				E47FCC3E26435CBE000D7EFF /* PositionScrollView.swift in Sources */,
 				E47FCC4C2648EF9D000D7EFF /* AllowNotificationsScreen.swift in Sources */,
 				E475652F263FF8C800BB1C53 /* String+Ext.swift in Sources */,
+				E456A01A26571C2C002C149E /* Array+Ext.swift in Sources */,
+				E456A01C26571EA2002C149E /* PopoutViewModel.swift in Sources */,
 				E47FCC4A26469009000D7EFF /* ModifyAlarmViewModel.swift in Sources */,
 				E40E79A72640B33500A810AD /* Constants.swift in Sources */,
 				E47FCC52264A5600000D7EFF /* TitleBarButtonStyle.swift in Sources */,
