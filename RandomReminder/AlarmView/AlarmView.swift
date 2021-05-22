@@ -19,19 +19,19 @@ struct AlarmView: View {
             AlarmTools()
                 .environmentObject(viewModel)
             VStack {
-                VStack (alignment: .leading) {
-                    HStack {
+                VStack (alignment: .leading, spacing: 10) {
+                    VStack {
                         Text(viewModel.alarm.descriptionBuilder())
-                            .font(.caption)
+                            .font(.caption2)
                             .fontWeight(.medium)
-                            .foregroundColor(.gray)
-                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .foregroundColor(Constants.highlightColour.opacity(0.4))
                     }
                     
                     HStack {
                         Text(viewModel.alarm.text)
                             .foregroundColor(viewModel.alarm.snoozed ? .gray : .darkGrey)
-                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
                         Spacer()
                         
                         Text(String(viewModel.alarm.occurence))
