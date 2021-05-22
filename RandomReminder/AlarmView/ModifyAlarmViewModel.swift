@@ -38,10 +38,7 @@ class ModifyAlarmViewModel: PopoutViewModel {
 extension Time {
     func toDate() -> Date {
         let dc = self.toDateComponents()
-        let date = Calendar.current.date(bySettingHour: dc.hour ?? 0,
-                                              minute: dc.minute ?? 0,
-                                              second: dc.second ?? 0,
-                                              of: self.id)
+        let date = Calendar.current.date(from: dc)
         return date!
     }
 }

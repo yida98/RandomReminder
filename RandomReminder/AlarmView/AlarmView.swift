@@ -18,15 +18,20 @@ struct AlarmView: View {
         ZStack {
             AlarmTools()
                 .environmentObject(viewModel)
-            Group {
+            VStack {
                 VStack (alignment: .leading) {
-                    Text(viewModel.alarm.descriptionBuilder())
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
+                    HStack {
+                        Text(viewModel.alarm.descriptionBuilder())
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                            .lineLimit(nil)
+                    }
+                    
                     HStack {
                         Text(viewModel.alarm.text)
                             .foregroundColor(viewModel.alarm.snoozed ? .gray : .darkGrey)
+                            .lineLimit(nil)
                         Spacer()
                         
                         Text(String(viewModel.alarm.occurence))
@@ -43,6 +48,7 @@ struct AlarmView: View {
                     
                 }
                 .modifier(AlarmViewModifier(snoozed: viewModel.alarm.snoozed))
+                
             }
             .offset(x: viewModel.location.x)
             .gesture(

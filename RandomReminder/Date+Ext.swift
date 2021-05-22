@@ -26,7 +26,7 @@ extension Date {
     }
     
     static func toNearestHour(from date: Date, lowerBound: Bool) -> Date {
-        var dateComponent = Calendar.current.dateComponents([.day, .hour, .minute], from: date)
+        var dateComponent = Calendar.current.dateComponents([.hour, .minute], from: date)
         dateComponent.minute = 0
         if !lowerBound {
             if dateComponent.hour == 23 {

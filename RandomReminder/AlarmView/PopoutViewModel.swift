@@ -20,7 +20,7 @@ class PopoutViewModel: ObservableObject {
     }
     @Published var durationIndices: [Int] {
         willSet {
-            print("Duration: \(duration)\nDuration in Time: \(duration.flatMap { [$0.0.toTime(), $0.1.toTime()] })\nIndices: \(durationIndices)\nIflatMap: \(newValue.flatMap { [duration[$0].0, duration[$0].1] }.isAscending())")
+            print("Duration: \(duration)\nDuration in Time: \(duration.flatMap { [$0.0.toTime(), $0.1.toTime()] })\nIndices: \(newValue)")
             Just(newValue.flatMap { [duration[$0].0, duration[$0].1] }.isAscending())
                 .receive(on: RunLoop.main)
                 .assign(to: &$validDates)
@@ -56,7 +56,6 @@ class PopoutViewModel: ObservableObject {
                             durationIndices.flatMap { [duration[$0].0.toTime(), duration[$0].1.toTime()] },
                           occurence: self.occurence,
                           randomFrequency: self.random)
-        print(alarm.duration)
         completion(alarm)
         
     }
