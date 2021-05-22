@@ -18,12 +18,10 @@ class ModifyAlarmViewModel: PopoutViewModel {
         self.occurence = alarm.occurence
         self.activeAllDay = alarm.duration.isEmpty
         self.random = alarm.randomFrequency
-        if alarm.duration.isEmpty {
-            self.duration = [Constants.defaultDates]
-            self.durationIndices = [0]
-        } else {
+        if !alarm.duration.isEmpty {
             self.duration = try! alarm.duration.map { $0.toDate() }.toTuple()
-            self.durationIndices = [Int](duration.indices)
+            self.durationIndices = [Int](self.duration.indices)
+            print("init duration: \(duration)\ninit durationIndices: \(durationIndices)")
         }
         self.id = alarm.id
     }

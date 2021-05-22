@@ -22,15 +22,3 @@ struct DurationView<T: PopoutViewModel>: View {
         }
     }
 }
-
-extension Date {
-    static func toNearestHour(from date: Date, lowerBound: Bool) -> Date {
-        var dateComponent = Calendar.current.dateComponents([.hour, .minute], from: date)
-        if !lowerBound {
-            dateComponent.hour = dateComponent.hour!.advanced(by: 1)
-        }
-        dateComponent.minute = 0
-        let newDate = Calendar.current.date(from: dateComponent)
-        return newDate!
-    }
-}

@@ -19,6 +19,7 @@
 		E4756523263FC0C200BB1C53 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4756522263FC0C200BB1C53 /* Alarm.swift */; };
 		E475652D263FEA9800BB1C53 /* PopoutAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */; };
 		E475652F263FF8C800BB1C53 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475652E263FF8C800BB1C53 /* String+Ext.swift */; };
+		E47BACCB2658DF75005473BD /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47BACCA2658DF75005473BD /* Date+Ext.swift */; };
 		E47FCC34264219E4000D7EFF /* AlarmTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC33264219E4000D7EFF /* AlarmTools.swift */; };
 		E47FCC3826425332000D7EFF /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC3726425332000D7EFF /* AlarmViewModel.swift */; };
 		E47FCC3C26428CA5000D7EFF /* DrippingShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */; };
@@ -52,6 +53,7 @@
 		E4756522263FC0C200BB1C53 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoutAlarmView.swift; sourceTree = "<group>"; };
 		E475652E263FF8C800BB1C53 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		E47BACCA2658DF75005473BD /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		E47FCC33264219E4000D7EFF /* AlarmTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTools.swift; sourceTree = "<group>"; };
 		E47FCC3726425332000D7EFF /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
 		E47FCC3B26428CA5000D7EFF /* DrippingShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrippingShape.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				E47FCC3A2642865E000D7EFF /* Model */,
 				E40E79A62640B33500A810AD /* Constants.swift */,
 				E475652E263FF8C800BB1C53 /* String+Ext.swift */,
+				E47BACCA2658DF75005473BD /* Date+Ext.swift */,
 				E456A01926571C2C002C149E /* Array+Ext.swift */,
 				E4B8FBAF263FB701003810DE /* Info.plist */,
 				E4B8FBAC263FB701003810DE /* RandomReminder.xcdatamodeld */,
@@ -287,6 +290,7 @@
 				E475652D263FEA9800BB1C53 /* PopoutAlarmView.swift in Sources */,
 				E4B8FBA2263FB700003810DE /* RandomRemainderApp.swift in Sources */,
 				E456A01526525F9C002C149E /* Logger.swift in Sources */,
+				E47BACCB2658DF75005473BD /* Date+Ext.swift in Sources */,
 				E456A0182656218E002C149E /* AlertView.swift in Sources */,
 				E47FCC3C26428CA5000D7EFF /* DrippingShape.swift in Sources */,
 				E47FCC3826425332000D7EFF /* AlarmViewModel.swift in Sources */,

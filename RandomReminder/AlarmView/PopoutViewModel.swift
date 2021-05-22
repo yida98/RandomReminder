@@ -13,10 +13,14 @@ class PopoutViewModel: ObservableObject {
     @Published var occurence: Int
     @Published var activeAllDay: Bool
     @Published var random: Bool
-    @Published var duration: [(Date, Date)]
+    @Published var duration: [(Date, Date)] {
+        didSet {
+            durationIndices = durationIndices
+        }
+    }
     @Published var durationIndices: [Int] {
         willSet {
-            print("Duration: \(duration)\nIndices: \(durationIndices)\nIflatMap: \(newValue.flatMap { [duration[$0].0, duration[$0].1] })")
+            print("Duration: \(duration)\nDuration in Time: \(duration.flatMap { [$0.0.toTime(), $0.1.toTime()] })\nIndices: \(durationIndices)\nIflatMap: \(newValue.flatMap { [duration[$0].0, duration[$0].1] }.isAscending())")
             Just(newValue.flatMap { [duration[$0].0, duration[$0].1] }.isAscending())
                 .receive(on: RunLoop.main)
                 .assign(to: &$validDates)
@@ -47,9 +51,12 @@ class PopoutViewModel: ObservableObject {
     func done(_ completion: @escaping (Alarm) -> Void) {
         
         let alarm = Alarm(text: self.title,
-                          duration: self.activeAllDay ? [Time]() : durationIndices.flatMap { [duration[$0].0.toTime(), duration[$0].1.toTime()] },
+                          duration: self.activeAllDay ?
+                            [Time]() :
+                            durationIndices.flatMap { [duration[$0].0.toTime(), duration[$0].1.toTime()] },
                           occurence: self.occurence,
                           randomFrequency: self.random)
+        print(alarm.duration)
         completion(alarm)
         
     }
@@ -61,7 +68,6 @@ class PopoutViewModel: ObservableObject {
     
     func delete(from index: IndexSet) {
         durationIndices.remove(atOffsets: index)
-//        duration.remove(atOffsets: index)
         
         if duration.isEmpty {
             duration = [Constants.defaultDates]
