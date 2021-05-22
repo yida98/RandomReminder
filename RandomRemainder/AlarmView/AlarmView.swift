@@ -22,6 +22,7 @@ struct AlarmView: View {
                 VStack (alignment: .leading) {
                     Text(viewModel.alarm.descriptionBuilder())
                         .font(.caption)
+                        .fontWeight(.medium)
                         .foregroundColor(.gray)
                     HStack {
                         Text(viewModel.alarm.text)
@@ -32,11 +33,11 @@ struct AlarmView: View {
                             .padding(4)
                             .foregroundColor(Color.white)
                             .font(.title)
-                            .background(viewModel.alarm.snoozed ? Color.gray : Constants.secondaryColor)
+                            .background(viewModel.alarm.snoozed ? Color.gray : Constants.secondaryColour)
                             .cornerRadius(5)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Constants.highlightColour, lineWidth: 1)
+                                    .stroke(Constants.lowlightColour, lineWidth: 1)
                             )
                     }
                     

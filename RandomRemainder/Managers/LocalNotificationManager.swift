@@ -71,7 +71,7 @@ extension LocalNotificationManager {
     private static func contentBuilder(alarm: Alarm) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = alarm.text
-        content.body = alarm.text
+//        content.body = alarm.text
         content.sound = LocalNotificationManager.notificationSound
         return content
         

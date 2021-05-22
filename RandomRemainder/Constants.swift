@@ -44,7 +44,8 @@ extension Constants {
     //MARK: Colors
     static let backgroundColor: Color = .lightGrey3
     static let highlightColour: Color = .dustyBlue
-    static let secondaryColor: Color = .dustyPurple
+    static let lowlightColour: Color = .dreamPurple
+    static let secondaryColour: Color = .dustyPurple
 }
 
 extension Color {

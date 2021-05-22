@@ -14,6 +14,8 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
     @Binding var adding: Bool
     @Binding var alarm: Alarm?
     
+    @State var scale: CGFloat = 0.95
+    
     var body: some View {
         VStack {
             Group {
@@ -68,18 +70,14 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
                     HStack(spacing: 20) {
                         Spacer()
                         Button {
-                            isPresenting = false
-                            adding = true
-                            alarm = nil
+                            cancel()
                         } label: {
                             Text("Cancel")
                         }
                         .buttonStyle(BasicButtonStyle())
                         Button {
                             viewModel.done {
-                                isPresenting = false
-                                adding = true
-                                alarm = nil
+                                cancel()
                             }
                         } label: {
                             Text("Done")
@@ -92,11 +90,26 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
             }.background(Color.white)
             .cornerRadius(20)
             .padding()
+            .onAppear {
+                scale = 1
+            }
+            .scaleEffect(scale)
+            .animation(.easeIn(duration: 0.2))
             
         }
         .frame(width: Constants.screenSize.width, height: Constants.screenSize.height)
-        .background(Color.black.opacity(0.4))
+        .background(
+            Color.black.opacity(0.4)
+                .onTapGesture {
+                    cancel()
+        })
         .ignoresSafeArea()
+    }
+    
+    private func cancel() {
+        isPresenting = false
+        adding = true
+        alarm = nil
     }
 }
 
