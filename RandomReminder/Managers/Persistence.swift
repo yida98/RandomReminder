@@ -65,6 +65,7 @@ final class Storage: ObservableObject {
         let index = alarms.firstIndex { $0.id == id }
         if index != nil {
             alarms.remove(at: index!)
+            LocalNotificationManager.shared.removeAllNotifications(with: LocalNotificationManager.generateNotificationId(forId: id))
         }
     }
     
@@ -75,15 +76,20 @@ final class Storage: ObservableObject {
     }
     
     func updateAlarm(_ alarm: Alarm, for id: UUID) {
-        Storage.shared.alarms = Storage.shared.alarms.map {
-            if $0.id == id {
-                $0.text = alarm.text
-                $0.duration = alarm.duration
-                $0.occurence = alarm.occurence
-                $0.randomFrequency = alarm.randomFrequency
-                $0.snoozed = alarm.snoozed
+        if let idAffirmedAlarm = Storage.shared.alarms.first(where: { $0.id == id }) {
+            
+            Storage.shared.alarms = Storage.shared.alarms.map {
+                if $0.id == id {
+                    $0.text = alarm.text
+                    $0.duration = alarm.duration
+                    $0.occurence = alarm.occurence
+                    $0.randomFrequency = alarm.randomFrequency
+                    $0.snoozed = alarm.snoozed
+                }
+                return $0
             }
-            return $0
+            deleteAlarm(with: id)
+            addAlarm(alarm: idAffirmedAlarm)
         }
     }
 }

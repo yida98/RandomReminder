@@ -107,16 +107,23 @@ extension LocalNotificationManager {
 extension LocalNotificationManager {
     
     func snoozeAlarm(for alarm: Alarm) {
-        let identifiers = LocalNotificationManager.generateNotificationId(for: alarm)
+        let identifiers = LocalNotificationManager.generateNotificationId(forAlarm: alarm)
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
     }
     
-    private static func generateNotificationId(for alarm: Alarm) -> [String] {
+    static func generateNotificationId(forAlarm: Alarm) -> [String] {
         var result = [String]()
-        for occurence in 0..<alarm.occurence {
-            let id = alarm.notificationIdString(with: String(occurence))
+        for occurence in 0..<forAlarm.occurence {
+            let id = forAlarm.notificationIdString(with: String(occurence))
             result.append(id)
         }
         return result
+    }
+    
+    static func generateNotificationId(forId: UUID) -> [String] {
+        if let alarm = Storage.shared.alarms.first(where: { $0.id == forId }) {
+            return generateNotificationId(forAlarm: alarm)
+        }
+        return [String]()
     }
 }
