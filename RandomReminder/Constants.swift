@@ -34,8 +34,8 @@ extension Constants {
         impactMed.impactOccurred()
     }
     
-    static let defaultDates = [(Date.toNearestHour(from: Date(), lowerBound: true),
-                               Date.toNearestHour(from: Date(), lowerBound: false))]
+    static let defaultDates = (Date.toNearestHour(from: Date(), lowerBound: true),
+                               Date.toNearestHour(from: Date(), lowerBound: false))
     
 }
 

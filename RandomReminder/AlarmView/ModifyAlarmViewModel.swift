@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ModifyAlarmViewModel: PopoutViewModelParent {
+class ModifyAlarmViewModel: PopoutViewModel {
     
     private var id: UUID?
     
@@ -19,20 +19,20 @@ class ModifyAlarmViewModel: PopoutViewModelParent {
         self.activeAllDay = alarm.duration.isEmpty
         self.random = alarm.randomFrequency
         if alarm.duration.isEmpty {
-            self.duration = Constants.defaultDates
+            self.duration = [Constants.defaultDates]
+            self.durationIndices = [0]
         } else {
             self.duration = try! alarm.duration.map { $0.toDate() }.toTuple()
+            self.durationIndices = [Int](duration.indices)
         }
         self.id = alarm.id
     }
     
-    override func done(_ completion: @escaping () -> Void) {
-        let alarm = Alarm(text: title,
-                          duration: activeAllDay ? [Time]() : duration.flatMap { [$0.0.toTime(), $0.1.toTime()] },
-                          occurence: occurence,
-                          randomFrequency: random)
-        Storage.shared.updateAlarm(alarm, for: id!)
-        completion()
+    override func done(_ completion: @escaping (Alarm) -> Void) {
+        super.done { alarm in
+            Storage.shared.updateAlarm(alarm, for: self.id!)
+            completion(alarm)
+        }
     }
     
 }

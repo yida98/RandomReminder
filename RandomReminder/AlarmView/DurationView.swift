@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DurationView<T: PopoutViewModelParent>: View {
+struct DurationView<T: PopoutViewModel>: View {
     @EnvironmentObject var viewModel: T
     var index: Int
     var body: some View {

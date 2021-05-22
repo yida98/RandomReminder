@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PopoutAlarmView<T: PopoutViewModelParent>: View {
+struct PopoutAlarmView<T: PopoutViewModel>: View {
     
     @EnvironmentObject var viewModel: T
     @Binding var isPresenting: Bool
@@ -49,9 +49,8 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
                                     Spacer()
                                 }
                                 List {
-                                    ForEach(viewModel.duration, id: \.0.self) { tuple in
-                                        let index = viewModel.duration.firstIndex { ($0.0 == tuple.0 && $0.1 == tuple.1) }
-                                        DurationView<T>(index: index!)
+                                    ForEach(viewModel.durationIndices, id: \.self) { index in
+                                        DurationView<T>(index: index)
                                             .environmentObject(viewModel)
                                     }
                                     .onDelete(perform: { indexSet in
@@ -77,7 +76,7 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
                         }
                         .buttonStyle(BasicButtonStyle())
                         Button {
-                            viewModel.done {
+                            viewModel.done { alarm in
                                 cancel()
                             }
                         } label: {

@@ -8,15 +8,13 @@
 import Foundation
 import Combine
 
-class CreateAlarmViewModel: PopoutViewModelParent {
+class CreateAlarmViewModel: PopoutViewModel {
     
-    override func done(_ completion: @escaping () -> Void) {
-        let alarm = Alarm(text: title,
-                          duration: activeAllDay ? [Time]() : duration.flatMap { [$0.0.toTime(), $0.1.toTime()] },
-                          occurence: occurence,
-                          randomFrequency: random)
-        Storage.shared.addAlarm(alarm: alarm)
-        completion()
+    override func done(_ completion: @escaping (Alarm) -> Void) {
+        super.done { alarm in
+            Storage.shared.addAlarm(alarm: alarm)
+            completion(alarm)
+        }
     }
 }
 

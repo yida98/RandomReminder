@@ -8,27 +8,16 @@
 import Foundation
 import Combine
 
-protocol PopoutViewModel: ObservableObject {
-    var title: String { get set }
-    var occurence: Int { get set }
-    var activeAllDay: Bool { get set }
-    var random: Bool { get set }
-    var finished: Bool { get set }
-    var validDates: Bool { get set }
-    
-    func done(_ completion: @escaping () -> Void)
-    func addDuration()
-    func delete(from index: IndexSet)
-}
-
-class PopoutViewModelParent: PopoutViewModel {
+class PopoutViewModel: ObservableObject {
     @Published var title: String
     @Published var occurence: Int
     @Published var activeAllDay: Bool
     @Published var random: Bool
-    @Published var duration: [(Date, Date)] {
-        didSet {
-            Just(duration.flatMap{ [$0.0, $0.1] }.isAscending())
+    @Published var duration: [(Date, Date)]
+    @Published var durationIndices: [Int] {
+        willSet {
+            print("Duration: \(duration)\nIndices: \(durationIndices)\nIflatMap: \(newValue.flatMap { [duration[$0].0, duration[$0].1] })")
+            Just(newValue.flatMap { [duration[$0].0, duration[$0].1] }.isAscending())
                 .receive(on: RunLoop.main)
                 .assign(to: &$validDates)
         }
@@ -44,7 +33,8 @@ class PopoutViewModelParent: PopoutViewModel {
         self.occurence = 10
         self.activeAllDay = true
         self.random = true
-        self.duration = Constants.defaultDates
+        self.duration = [Constants.defaultDates]
+        self.durationIndices = [0]
         self.finished = false
         self.validDates = true
         self.somePublisher = CurrentValueSubject<Bool, Never>(false)
@@ -54,17 +44,27 @@ class PopoutViewModelParent: PopoutViewModel {
             .assign(to: &$finished)
     }
     
-    func done(_ completion: @escaping () -> Void) {  }
+    func done(_ completion: @escaping (Alarm) -> Void) {
+        
+        let alarm = Alarm(text: self.title,
+                          duration: self.activeAllDay ? [Time]() : durationIndices.flatMap { [duration[$0].0.toTime(), duration[$0].1.toTime()] },
+                          occurence: self.occurence,
+                          randomFrequency: self.random)
+        completion(alarm)
+        
+    }
     
     func addDuration() {
-        duration.append(contentsOf: Constants.defaultDates)
+        duration.append(Constants.defaultDates)
+        durationIndices.append(duration.count - 1)
     }
     
     func delete(from index: IndexSet) {
-        duration.remove(atOffsets: index)
+        durationIndices.remove(atOffsets: index)
+//        duration.remove(atOffsets: index)
         
         if duration.isEmpty {
-            duration = Constants.defaultDates
+            duration = [Constants.defaultDates]
         }
         
     }
