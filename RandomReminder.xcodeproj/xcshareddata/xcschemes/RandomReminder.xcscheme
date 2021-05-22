@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B8FB9D263FB700003810DE"
-               BuildableName = "RandomRemainder.app"
-               BlueprintName = "RandomRemainder"
-               ReferencedContainer = "container:RandomRemainder.xcodeproj">
+               BuildableName = "RandomReminder.app"
+               BlueprintName = "RandomReminder"
+               ReferencedContainer = "container:RandomReminder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B8FB9D263FB700003810DE"
-            BuildableName = "RandomRemainder.app"
-            BlueprintName = "RandomRemainder"
-            ReferencedContainer = "container:RandomRemainder.xcodeproj">
+            BuildableName = "RandomReminder.app"
+            BlueprintName = "RandomReminder"
+            ReferencedContainer = "container:RandomReminder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B8FB9D263FB700003810DE"
-            BuildableName = "RandomRemainder.app"
-            BlueprintName = "RandomRemainder"
-            ReferencedContainer = "container:RandomRemainder.xcodeproj">
+            BuildableName = "RandomReminder.app"
+            BlueprintName = "RandomReminder"
+            ReferencedContainer = "container:RandomReminder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

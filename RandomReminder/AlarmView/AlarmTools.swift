@@ -19,21 +19,21 @@ struct AlarmTools: View {
         HStack {
             ZStack {
                 Circle()
-                    .fill(viewModel.snooze ? Color.blue : Color.lightGrey3)
+                    .fill(viewModel.snooze ? Color.blue : Constants.backgroundColor)
                     .scaleEffect(viewModel.snooze ? 1 : 0.5, anchor: .center)
                     .modifier(CircleHaptic(condition: viewModel.snooze))
                 Image(systemName: "moon.zzz.fill")
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Constants.backgroundColor)
             }
             .padding(.leading, AlarmTools.inset)
             Spacer()
             ZStack {
                 Circle()
-                    .fill(viewModel.delete ? Color.red : Color.lightGrey3)
+                    .fill(viewModel.delete ? Color.red : Constants.backgroundColor)
                     .scaleEffect(viewModel.delete ? 1 : 0.5, anchor: .center)
                     .modifier(CircleHaptic(condition: viewModel.delete))
                 Image(systemName: "trash.fill")
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Constants.backgroundColor)
             }
             .padding(.trailing, AlarmTools.inset)
         }.alert(isPresented: $viewModel.showAlert) {
