@@ -32,6 +32,13 @@ struct ContentView: View {
                             viewModel.isReady = false
                         }
                 }, content: {
+                    HStack {
+                        Text("Alarms")
+                            .font(.title2)
+                            .foregroundColor(Constants.secondaryColour.opacity(0.6))
+                        Spacer()
+                    }.padding(.horizontal, Constants.insetSize.width / 2)
+                        
                     ForEach(storage.alarms) { alarm in
                         AlarmView(isTapped: $viewModel.tappedAlarm)
                             .environmentObject(AlarmViewModel(alarm: alarm))

@@ -20,6 +20,7 @@ class AlarmViewModel: ObservableObject {
     @ObservedObject var alarm: Alarm
     
     @Published var isPresenting: Bool = false
+    @Published var showAlert: Bool = false
     
     private var cancellable = Set<AnyCancellable>()
 
@@ -57,6 +58,10 @@ class AlarmViewModel: ObservableObject {
                 self.delete = value
             }
             .store(in: &cancellable)
+    }
+    
+    func deleteAlarmCheck() {
+        showAlert = true
     }
     
     func deleteAlarm() {

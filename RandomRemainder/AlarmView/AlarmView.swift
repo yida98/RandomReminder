@@ -61,7 +61,7 @@ struct AlarmView: View {
                                 viewModel.snoozeAlarm()
                             }
                             if viewModel.delete {
-                                viewModel.deleteAlarm()
+                                viewModel.deleteAlarmCheck()
                             }
                             viewModel.location.x = 0
                         })

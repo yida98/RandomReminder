@@ -36,6 +36,13 @@ struct AlarmTools: View {
                     .foregroundColor(Color.white)
             }
             .padding(.trailing, AlarmTools.inset)
+        }.alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text("Delete \(viewModel.alarm.text)?"),
+                primaryButton: .cancel(),
+                secondaryButton: .destructive(Text("Confirm"), action: {
+                    viewModel.deleteAlarm()
+                }))
         }
     }
 }

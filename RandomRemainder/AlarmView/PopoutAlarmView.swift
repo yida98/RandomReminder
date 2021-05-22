@@ -15,6 +15,7 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
     @Binding var alarm: Alarm?
     
     @State var scale: CGFloat = 0.95
+    @State var opacity: Double = 0
     
     var body: some View {
         VStack {
@@ -92,17 +93,20 @@ struct PopoutAlarmView<T: PopoutViewModelParent>: View {
             .padding()
             .onAppear {
                 scale = 1
+                opacity = 0.5
             }
             .scaleEffect(scale)
-            .animation(.easeIn(duration: 0.2))
             
         }
         .frame(width: Constants.screenSize.width, height: Constants.screenSize.height)
         .background(
-            Color.black.opacity(0.4)
+            Color.black
+                .opacity(opacity)
                 .onTapGesture {
                     cancel()
-        })
+                }
+        )
+        .animation(.easeOut(duration: 0.2))
         .ignoresSafeArea()
     }
     
