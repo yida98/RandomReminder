@@ -21,7 +21,6 @@ class ModifyAlarmViewModel: PopoutViewModel {
         if !alarm.duration.isEmpty {
             self.duration = try! alarm.duration.map { $0.toDate() }.toTuple()
             self.durationIndices = [Int](self.duration.indices)
-            print("init duration: \(duration)\ninit durationIndices: \(durationIndices)")
         }
         self.id = alarm.id
     }

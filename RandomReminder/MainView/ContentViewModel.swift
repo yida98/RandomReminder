@@ -53,7 +53,6 @@ class ContentViewModel: ObservableObject {
     
     func openSettings() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:]) { value in
-            print("Open Settings")
         }
     }
     

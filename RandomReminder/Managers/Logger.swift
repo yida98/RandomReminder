@@ -26,7 +26,6 @@ struct Logger {
             try log.write(toFile: Logger.fileName.absoluteURL.path,
                           atomically: true,
                           encoding: String.Encoding.utf8)
-            debugPrint(log)
         } catch {
             
         }
