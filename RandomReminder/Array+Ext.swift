@@ -29,9 +29,9 @@ extension Array {
         var result = [(Element, Element)]()
         var i = 1
         
-        while i <= self.count / 2 {
+        while i < self.count {
             result.append((self[i - 1], self[i]))
-            i += 1
+            i += 2
         }
         
         return result
