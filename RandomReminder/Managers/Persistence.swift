@@ -88,8 +88,10 @@ final class Storage: ObservableObject {
                 }
                 return $0
             }
-            deleteAlarm(with: id)
-            addAlarm(alarm: idAffirmedAlarm)
+            LocalNotificationManager.shared.removeAllNotifications(with: LocalNotificationManager.generateNotificationId(forId: id))
+            LocalNotificationManager.shared.addNotification(alarm: idAffirmedAlarm)
+        } else {
+            debugPrint("error")
         }
     }
 }

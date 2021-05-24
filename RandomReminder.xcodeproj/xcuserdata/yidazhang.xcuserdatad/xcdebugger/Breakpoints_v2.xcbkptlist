@@ -7,63 +7,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "852E29BC-090E-4CE2-B6F6-2450F597D833"
+            uuid = "7DBBB35A-B790-4617-8E31-ECF4178895B3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RandomReminder/AlarmView/ModifyAlarmViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "toDate()"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7A8FDC73-62F4-453E-8141-F065C4254784"
+            uuid = "9AC3C6A6-1248-406D-8DDB-DCAD3CFC2368"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RandomReminder/AlarmView/ModifyAlarmViewModel.swift"
+            filePath = "RandomReminder/Managers/Persistence.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "init(alarm:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "updateAlarm(_:for:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "7A8FDC73-62F4-453E-8141-F065C4254784 - 3ea8e5110f0fcb00"
+                  uuid = "9AC3C6A6-1248-406D-8DDB-DCAD3CFC2368 - dc881210623c078e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "RandomReminder.ModifyAlarmViewModel.init(alarm: RandomReminder.Alarm) -&gt; RandomReminder.ModifyAlarmViewModel"
+                  symbolName = "RandomReminder.Storage.updateAlarm(_: RandomReminder.Alarm, for: Foundation.UUID) -&gt; ()"
                   moduleName = "RandomReminder"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yidazhang/Documents/Projects/RandomRemainder/RandomReminder/AlarmView/ModifyAlarmViewModel.swift"
+                  urlString = "file:///Users/yidazhang/Documents/Projects/RandomRemainder/RandomReminder/Managers/Persistence.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "948">
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "593">
                </Location>
                <Location
-                  uuid = "7A8FDC73-62F4-453E-8141-F065C4254784 - 156c30c5820f9240"
+                  uuid = "9AC3C6A6-1248-406D-8DDB-DCAD3CFC2368 - 36edd6030e868809"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (RandomReminder.Time) -&gt; Foundation.Date in RandomReminder.ModifyAlarmViewModel.init(alarm: RandomReminder.Alarm) -&gt; RandomReminder.ModifyAlarmViewModel"
+                  symbolName = "closure #2 (RandomReminder.Alarm) -&gt; RandomReminder.Alarm in RandomReminder.Storage.updateAlarm(_: RandomReminder.Alarm, for: Foundation.UUID) -&gt; ()"
                   moduleName = "RandomReminder"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yidazhang/Documents/Projects/RandomRemainder/RandomReminder/AlarmView/ModifyAlarmViewModel.swift"
+                  urlString = "file:///Users/yidazhang/Documents/Projects/RandomRemainder/RandomReminder/Managers/Persistence.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "110">
                </Location>
             </Locations>
          </BreakpointContent>

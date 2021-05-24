@@ -82,7 +82,7 @@ extension Alarm {
     
     static func getOccurence(from notificationId: String) -> Int? {
         if let alarm = Alarm.getAlarm(from: notificationId) {
-            if let result = Int(notificationId[(alarm.id.uuidString.count - 1)..<notificationId.count]) {
+            if let result = Int(notificationId[alarm.id.uuidString.count..<notificationId.count]) {
                 return result
             }
         }
