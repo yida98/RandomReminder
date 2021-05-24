@@ -60,10 +60,11 @@ extension LocalNotificationManager {
     
     func addNotification(alarm: Alarm) {
         let content = LocalNotificationManager.contentBuilder(alarm: alarm)
+        let idStrings = LocalNotificationManager.generateNotificationId(forAlarm: alarm)
         for occurence in 0..<alarm.occurence {
             let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: alarm.executionTimes()[occurence].toDateComponents(), repeats: false)
 //            debugPrint(alarm.executionTimes()[occurence].toDateComponents().debugDescription)
-            let request = UNNotificationRequest(identifier: alarm.notificationIdString(with: String(occurence)), content: content, trigger: calendarTrigger)
+            let request = UNNotificationRequest(identifier: idStrings[occurence], content: content, trigger: calendarTrigger)
             sendNotification(with: request)
         }
     }

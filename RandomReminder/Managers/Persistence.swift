@@ -64,8 +64,8 @@ final class Storage: ObservableObject {
     func deleteAlarm(with id: UUID) {
         let index = alarms.firstIndex { $0.id == id }
         if index != nil {
-            alarms.remove(at: index!)
             LocalNotificationManager.shared.removeAllNotifications(with: LocalNotificationManager.generateNotificationId(forId: id))
+            alarms.remove(at: index!)
         }
     }
     

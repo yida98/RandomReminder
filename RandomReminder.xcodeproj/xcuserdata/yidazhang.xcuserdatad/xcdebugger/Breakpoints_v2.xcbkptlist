@@ -68,5 +68,85 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "554A45D4-4813-4347-AA0D-CFC2F32E43DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RandomReminder/Managers/LocalNotificationManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "removeAllNotifications(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4319666F-4D88-49CF-908B-ED15E8FFE678"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RandomReminder/Managers/Persistence.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "deleteAlarm(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4319666F-4D88-49CF-908B-ED15E8FFE678 - ead49813e33fce68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RandomReminder.Storage.deleteAlarm(with: Foundation.UUID) -&gt; ()"
+                  moduleName = "RandomReminder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yidazhang/Documents/Projects/RandomRemainder/RandomReminder/Managers/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "133">
+               </Location>
+               <Location
+                  uuid = "4319666F-4D88-49CF-908B-ED15E8FFE678 - e8aea036745930f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RandomReminder.Alarm) -&gt; Swift.Bool in RandomReminder.Storage.deleteAlarm(with: Foundation.UUID) -&gt; ()"
+                  moduleName = "RandomReminder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yidazhang/Documents/Projects/RandomRemainder/RandomReminder/Managers/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "87">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC50FDF7-1D0B-471C-9760-B47242AEB9B4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RandomReminder/Managers/LocalNotificationManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "addNotification(alarm:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
