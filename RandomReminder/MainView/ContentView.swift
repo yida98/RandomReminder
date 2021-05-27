@@ -48,8 +48,18 @@ struct ContentView: View {
             }.background(Constants.backgroundColor)
             .ignoresSafeArea()
             .modifier(OverlayModifier(isPresenting: $viewModel.isPresenting, adding: $viewModel.adding, alarm: $viewModel.tappedAlarm, viewModel: viewModel))
-            if !viewModel.allowsNotification {
-                AllowNotificationsScreen()
+            AlertView(isPresenting: !viewModel.allowsNotification) {
+                Button {
+                    viewModel.openSettings()
+                } label: {
+                    HStack {
+                        Text("Please enable notifications")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                        Image(systemName: "arrowshape.turn.up.right.circle.fill")
+                            .foregroundColor(.lightGrey)
+                    }
+                }
             }
         }
         
