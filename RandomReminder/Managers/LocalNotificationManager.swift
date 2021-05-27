@@ -35,12 +35,12 @@ class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         print(userInfo) // the payload that is attached to the push notification
         // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
+        LocalNotificationManager.shared.removeAllNotifications(with: [notification.request.identifier])
         Logger.log(.notificationReceived, message: notification.debugDescription)
         if let requestAlarm = Alarm.getAlarm(from: notification.request.identifier) {
             if let occurenceNumber = Alarm.getOccurence(from: notification.request.identifier) {
-                var newDateComponents = requestAlarm.executionTimes()[occurenceNumber].toDateComponents()
-                newDateComponents.day = Date().addingTimeInterval(3600*24).toDateComponents().day
-                let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: false)
+                let newDateComponents = requestAlarm.executionTimes()[occurenceNumber].toDateComponents()
+                let newTrigger = UNCalendarNotificationTrigger(dateMatching: newDateComponents, repeats: true)
                 LocalNotificationManager.shared.addNotification(alarm: requestAlarm, trigger: newTrigger, notificationId: notification.request.identifier)
                 completionHandler([.banner, .sound])
             }
@@ -62,7 +62,7 @@ extension LocalNotificationManager {
         let content = LocalNotificationManager.contentBuilder(alarm: alarm)
         let idStrings = LocalNotificationManager.generateNotificationId(forAlarm: alarm)
         for occurence in 0..<alarm.occurence {
-            let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: alarm.executionTimes()[occurence].toDateComponents(), repeats: false)
+            let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: alarm.executionTimes()[occurence].toDateComponents(), repeats: true)
 //            debugPrint(alarm.executionTimes()[occurence].toDateComponents().debugDescription)
             let request = UNNotificationRequest(identifier: idStrings[occurence], content: content, trigger: calendarTrigger)
             sendNotification(with: request)
