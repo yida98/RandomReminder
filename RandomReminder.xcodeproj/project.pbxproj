@@ -185,6 +185,7 @@
 		E4B8FB95263FB700003810DE = {
 			isa = PBXGroup;
 			children = (
+				E444955626620240009F61A4 /* README.md */,
 				E4B8FBA0263FB700003810DE /* RandomReminder */,
 				E4B8FB9F263FB700003810DE /* Products */,
 			);
@@ -202,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */,
-				E444955626620240009F61A4 /* README.md */,
 				E47FCC54264B6603000D7EFF /* Views */,
 				E456A0162653435C002C149E /* Managers */,
 				E47FCC3A2642865E000D7EFF /* Model */,
