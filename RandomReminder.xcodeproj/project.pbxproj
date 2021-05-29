@@ -46,6 +46,7 @@
 		E40E79AC2640EBA900A810AD /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		E40E79B0264118CE00A810AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		E40E79B226412A7700A810AD /* AlarmViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModifier.swift; sourceTree = "<group>"; };
+		E444955626620240009F61A4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E456A01426525F9C002C149E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E456A0172656218E002C149E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		E456A01926571C2C002C149E /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
@@ -87,6 +88,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E44495532662014B009F61A4 /* Alarm module */ = {
+			isa = PBXGroup;
+			children = (
+				E456A01B26571EA2002C149E /* PopoutViewModel.swift */,
+				E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */,
+				E47FCC4926469009000D7EFF /* ModifyAlarmViewModel.swift */,
+				E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */,
+				E47FCC45264609AD000D7EFF /* DurationView.swift */,
+			);
+			path = "Alarm module";
+			sourceTree = "<group>";
+		};
+		E444955526620192009F61A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E40E79A62640B33500A810AD /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E44495572662033C009F61A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E475652E263FF8C800BB1C53 /* String+Ext.swift */,
+				E47BACCA2658DF75005473BD /* Date+Ext.swift */,
+				E456A01926571C2C002C149E /* Array+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E456A0162653435C002C149E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,20 +128,16 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		E47FCC3926426D38000D7EFF /* AlarmView */ = {
+		E47FCC3926426D38000D7EFF /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
 				E47FCC3726425332000D7EFF /* AlarmViewModel.swift */,
 				E40E79B0264118CE00A810AD /* AlarmView.swift */,
-				E40E79B226412A7700A810AD /* AlarmViewModifier.swift */,
-				E47FCC4926469009000D7EFF /* ModifyAlarmViewModel.swift */,
-				E47FCC4726460AFA000D7EFF /* CreateAlarmViewModel.swift */,
-				E456A01B26571EA2002C149E /* PopoutViewModel.swift */,
-				E475652C263FEA9800BB1C53 /* PopoutAlarmView.swift */,
 				E47FCC33264219E4000D7EFF /* AlarmTools.swift */,
-				E47FCC45264609AD000D7EFF /* DurationView.swift */,
+				E40E79B226412A7700A810AD /* AlarmViewModifier.swift */,
+				E44495532662014B009F61A4 /* Alarm module */,
 			);
-			path = AlarmView;
+			path = Alarm;
 			sourceTree = "<group>";
 		};
 		E47FCC3A2642865E000D7EFF /* Model */ = {
@@ -131,15 +158,17 @@
 			path = "Button Styles";
 			sourceTree = "<group>";
 		};
-		E47FCC54264B6603000D7EFF /* MainView */ = {
+		E47FCC54264B6603000D7EFF /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				E40E79A42640B1D200A810AD /* ContentViewModel.swift */,
 				E4B8FBA3263FB700003810DE /* ContentView.swift */,
 				E47FCC432643ACB9000D7EFF /* TitleBar.swift */,
-				E47FCC3926426D38000D7EFF /* AlarmView */,
+				E47FCC3926426D38000D7EFF /* Alarm */,
+				E47FCC55264B661B000D7EFF /* HelperView */,
+				E47FCC53264B5C3C000D7EFF /* Button Styles */,
 			);
-			path = MainView;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E47FCC55264B661B000D7EFF /* HelperView */ = {
@@ -173,16 +202,13 @@
 			isa = PBXGroup;
 			children = (
 				E4B8FBA1263FB700003810DE /* RandomRemainderApp.swift */,
-				E47FCC54264B6603000D7EFF /* MainView */,
-				E47FCC55264B661B000D7EFF /* HelperView */,
-				E47FCC53264B5C3C000D7EFF /* Button Styles */,
-				E4B8FBA5263FB700003810DE /* Assets.xcassets */,
+				E444955626620240009F61A4 /* README.md */,
+				E47FCC54264B6603000D7EFF /* Views */,
 				E456A0162653435C002C149E /* Managers */,
 				E47FCC3A2642865E000D7EFF /* Model */,
-				E40E79A62640B33500A810AD /* Constants.swift */,
-				E475652E263FF8C800BB1C53 /* String+Ext.swift */,
-				E47BACCA2658DF75005473BD /* Date+Ext.swift */,
-				E456A01926571C2C002C149E /* Array+Ext.swift */,
+				E444955526620192009F61A4 /* Utils */,
+				E44495572662033C009F61A4 /* Extensions */,
+				E4B8FBA5263FB700003810DE /* Assets.xcassets */,
 				E4B8FBAF263FB701003810DE /* Info.plist */,
 				E4B8FBAC263FB701003810DE /* RandomReminder.xcdatamodeld */,
 				E4B8FBA7263FB700003810DE /* Preview Content */,
