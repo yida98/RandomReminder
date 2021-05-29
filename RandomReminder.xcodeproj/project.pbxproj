@@ -46,6 +46,7 @@
 		E40E79AC2640EBA900A810AD /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		E40E79B0264118CE00A810AD /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		E40E79B226412A7700A810AD /* AlarmViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModifier.swift; sourceTree = "<group>"; };
+		E4223DD426620C6900720961 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E444955626620240009F61A4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E456A01426525F9C002C149E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		E456A0172656218E002C149E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -186,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E444955626620240009F61A4 /* README.md */,
+				E4223DD426620C6900720961 /* .gitignore */,
 				E4B8FBA0263FB700003810DE /* RandomReminder */,
 				E4B8FB9F263FB700003810DE /* Products */,
 			);
