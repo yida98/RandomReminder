@@ -137,6 +137,7 @@
 				E40E79A42640B1D200A810AD /* ContentViewModel.swift */,
 				E4B8FBA3263FB700003810DE /* ContentView.swift */,
 				E47FCC432643ACB9000D7EFF /* TitleBar.swift */,
+				E47FCC3926426D38000D7EFF /* AlarmView */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -175,7 +176,6 @@
 				E47FCC54264B6603000D7EFF /* MainView */,
 				E47FCC55264B661B000D7EFF /* HelperView */,
 				E47FCC53264B5C3C000D7EFF /* Button Styles */,
-				E47FCC3926426D38000D7EFF /* AlarmView */,
 				E4B8FBA5263FB700003810DE /* Assets.xcassets */,
 				E456A0162653435C002C149E /* Managers */,
 				E47FCC3A2642865E000D7EFF /* Model */,

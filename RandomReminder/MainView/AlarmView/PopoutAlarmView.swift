@@ -16,6 +16,7 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
     
     @State var scale: CGFloat = 0.95
     @State var opacity: Double = 0
+    @State var showAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -70,7 +71,7 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
                     HStack(spacing: 20) {
                         Spacer()
                         Button {
-                            cancel()
+                            showAlert = true
                         } label: {
                             Text("Cancel")
                         }
@@ -97,12 +98,19 @@ struct PopoutAlarmView<T: PopoutViewModel>: View {
             .scaleEffect(scale)
             
         }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Cancel editing?"),
+                primaryButton: .cancel(),
+                secondaryButton: .destructive(Text("Confirm"), action: {
+                    cancel()
+        }))}
         .frame(width: Constants.screenSize.width, height: Constants.screenSize.height)
         .background(
             Color.black
                 .opacity(opacity)
                 .onTapGesture {
-                    cancel()
+                    showAlert = true
                 }
         )
         .animation(.easeOut(duration: 0.2))
